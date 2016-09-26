@@ -21,6 +21,7 @@ var vm = new Vue({
         'spinner': VueStrap.spinner,
     },
     data: {
+        loaded: false,
         newUser: {
             id: '',
             name: '',
@@ -59,14 +60,17 @@ var vm = new Vue({
             });
         },
         AddNewUser: function () { //añadir un usuario
+            this.loaded=true;
             var user = this.newUser;
             this.newUser = { name:'', email:'', address:'' };
             this.$http.post('/api/users', user,  function (data) {
+                this.loaded=false;
                 this.showModal=false;
                 vm.fetchUser();
                 msj=' usuario nuevo creado correctamente.';
                 this.ShowMensaje(msj, 5, true, false);
             }).error(function(errors) {
+                this.loaded=false;
                 this.ShowMensaje(errors, 5, false, true);
             });
             self = this;
@@ -90,14 +94,17 @@ var vm = new Vue({
             this.fetchUser();
         },
         EditUser: function (id) { // enviar a laravel para guardar edicion
+            this.loaded=true;
             var user = this.newUser;
             this.newUser = { id: '', name: '', email: '', address: ''};
             this.$http.patch('/api/users/' + id, user, function (data) {
+                this.loaded=false;
                 this.showModal=false;
                 vm.fetchUser();
                 msj=' usuario modificado correctamente.';
                 this.ShowMensaje(msj, 5, true, false);
             }).error(function(errors) {
+                this.loaded=false;
                 this.ShowMensaje(errors, 5, false, true);
             });
             this.fetchUser();
