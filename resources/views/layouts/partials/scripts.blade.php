@@ -8,7 +8,7 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 <script src="/js/vendor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-strap/1.0.11/vue-strap.min.js"></script>
-<script src="/js/users.js"></script>
+
 @stack('scripts_custom')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the

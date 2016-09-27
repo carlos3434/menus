@@ -20,6 +20,7 @@ Route::get('roles', function () {
 
 
 Route::resource('/usuarios', 'UserController');
+Route::resource('/pedidos', 'PedidoController');
 Route::resource('/api/users', 'ApiUserController');
 
 

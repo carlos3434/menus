@@ -50,7 +50,7 @@
     </div>
 @endsection
 
-@push('scripts')
+@push('scripts_custom')
     
     <script src="/js/users.js"></script>
 
