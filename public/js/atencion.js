@@ -1,3 +1,34 @@
+$(document).ready(function() {
+    activarMesas();
+
+    $('.stats-btn').on("click",function(){
+        activarPlatos();
+    });
+    $('#verPlatos').on("click",function(){
+        activarPedidos();
+    });
+    $('#cobrar').on("click",function(){
+        //activarPedidos();
+    });
+});
+
+activarMesas=function(){
+    $("#mesas").css("display","");
+    $("#platos").css("display","none");
+    $("#pedidos").css("display","none");
+};
+activarPlatos=function(){
+    $("#mesas").css("display","none");
+    $("#platos").css("display","");
+    $("#pedidos").css("display","none");
+};
+activarPedidos=function(){
+    $("#mesas").css("display","none");
+    $("#platos").css("display","none");
+    $("#pedidos").css("display","");
+};
+
+
 var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 var vm = new Vue({

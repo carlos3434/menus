@@ -10,13 +10,31 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*
 use Restaurant\Role;
 use Restaurant\Permission;
 use Restaurant\User;
 Route::get('roles', function () {
     return User::all();
+});*/
+
+Route::group(array('domain' => 'menus'), function() {
+    Route::get('mi/ruta', function() {
+        return 'Hola desde myapp.dev!';
+    });
 });
 
+Route::group(array('domain' => 'otra.menus'), function(){
+    Route::get('mi/ruta', function() {
+        return 'Hola desde otra.menus!';
+    });
+});
+
+Route::group(array('domain' => 'tercera.menus'), function(){
+    Route::get('mi/ruta', function() {
+        return 'Hola desde tercera.menus!';
+    });
+});
 
 
 Route::resource('/usuarios', 'UserController');
