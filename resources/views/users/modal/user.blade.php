@@ -43,6 +43,6 @@
     </form>
 
   </div>
-  <div v-if="false" slot="modal-footer" class="modal-footer"></div>
+  <div v-show="showModal" slot="modal-footer" class="modal-footer"></div>
 
 </modal>

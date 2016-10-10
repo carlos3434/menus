@@ -14,5 +14,9 @@ class PedidoController extends Controller
     {
         return view('pedidos.atencion');
     }
+    public function getPreparacion()
+    {
+        return view('pedidos.atencion');
+    }
 
 }

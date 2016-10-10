@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Usuarios
+    Atención
+@endsection
+
+@section('contentheader_title')
+    <h1">Atención</h1>
 @endsection
 
 @section('main-content')
@@ -20,11 +24,11 @@
             
            <div id='mesas' class="col-md-8">
                 <!-- col-md-8 start here -->
-                
+                <h3>Mesas</h3>
                     <!-- .row start -->
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <!-- .col-md-3 -->
-                        <a href="#" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
+                        <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
                             <i class="icon icomoon-icon-table"></i>
                             <span class="notification">5</span>
                         </a>
@@ -32,7 +36,7 @@
                     <!-- / .col-md-3 -->
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <!-- .col-md-3 -->
-                        <a href="#" class="stats-btn mb20">
+                        <a href="javascript:void(0);" class="stats-btn mb20">
                             <i class="icon icomoon-icon-table"></i>
                             <span class="notification blue">12</span>
                         </a>
@@ -40,8 +44,8 @@
                     <!-- / .col-md-3 -->
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <!-- .col-md-3 -->
-                        <!--<a href="#" title="" class="stats-btn pattern tipB mb20" data-original-title="I`m with pattern">-->
-                        <a href="#" class="stats-btn mb20">
+                        <!--<a href="javascript:void(0);" title="" class="stats-btn pattern tipB mb20" data-original-title="I`m with pattern">-->
+                        <a href="javascript:void(0);" class="stats-btn mb20">
                             <i class="icon icomoon-icon-table"></i>
                             <!-- .<span class="txt">New Comments</span>-->
                             <span class="notification green">23</span>
@@ -50,7 +54,7 @@
                     <!-- / .col-md-3 -->
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <!-- .col-md-3 -->
-                        <a href="#" class="stats-btn mb20">
+                        <a href="javascript:void(0);" class="stats-btn mb20">
                             <i class="icon icomoon-icon-table"></i>
                             <span class="notification">+5</span>
                         </a>
@@ -61,6 +65,7 @@
             </div>
 
             <div id='platos' class="col-md-12">
+                <h3>Mesa # 2</h3>
                 <ul class="nav nav-pills  nav-justified">
                   <li class="active"><a data-toggle="pill" href="#menu">Menu</a></li>
                   <li><a data-toggle="pill" href="#carta">Carta</a></li>
@@ -83,7 +88,7 @@
                                             <tr>
                                                 <th scope="row">1</td>
                                                 <td>
-                                                    Arroz c/n pollo
+                                                    Seco a la huachana
                                                 </td>
                                                 <td>
                                                     <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
@@ -96,7 +101,7 @@
                                                 </td>
                                                 <td>
                                                     <input style="display: none"  class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
-                                                    <span class="badge pull-right">27</span>
+                                                    <span class="badge pull-right">32</span>
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
@@ -107,7 +112,55 @@
                                             <tr>
                                                 <th scope="row">2</td>
                                                 <td>
-                                                    Arroz chaufa
+                                                    Aji de gallina
+                                                </td>
+                                                <td>
+                                                    <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
+                                                        <option value='1'>Adulto</option>
+                                                        <option value='2' selected>Niño</option>
+                                                        <option value='3' selected>Embarazada</option>
+                                                        <option value='4' selected>Mujer c7n bebe</option>
+                                                        <option value='5' selected>Adulto mayor</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input style="display: none"  class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
+                                                    <span class="badge pull-right">30</span>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
+                                                        &nbsp;<i class="fa fa-plus fa-sm"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</td>
+                                                <td>
+                                                    Escaveche
+                                                </td>
+                                                <td>
+                                                    <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
+                                                        <option value='1'>Adulto</option>
+                                                        <option value='2' selected>Niño</option>
+                                                        <option value='3' selected>Embarazada</option>
+                                                        <option value='4' selected>Mujer c7n bebe</option>
+                                                        <option value='5' selected>Adulto mayor</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input style="display: none"  class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
+                                                    <span class="badge pull-right">14</span>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
+                                                        &nbsp;<i class="fa fa-plus fa-sm"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</td>
+                                                <td>
+                                                    Tallarines
                                                 </td>
                                                 <td>
                                                     <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
@@ -120,7 +173,7 @@
                                                 </td>
                                                 <td>
                                                     <input  style="display: none" class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
-                                                    <span class="badge pull-right">23</span>
+                                                    <span class="badge pull-right">20</span>
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
@@ -130,7 +183,9 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a class='btn btn-primary btn-sm' id="verPlatos"
+                                    <a class='btn btn-default btn-sm pull-left' id="volverVerPlatos"
+                                        ><i class="fa fa-plus fa-lg"></i>&nbsp;Volver</a>
+                                    <a class='btn btn-primary btn-sm pull-right' id="verPlatos"
                                         ><i class="fa fa-plus fa-lg"></i>&nbsp;Previsualizar</a>
                                 </div>
                             </div>
@@ -214,8 +269,10 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
-                                    <a class='btn btn-primary btn-sm' id="cobrar"
+                                    
+                                    <a class='btn btn-default btn-sm pull-left' id="volverCobrar"
+                                        ><i class="fa fa-plus fa-lg"></i>&nbsp;Volver</a>
+                                    <a class='btn btn-primary btn-sm pull-right' id="cobrar"
                                         data-toggle="modal" data-target="#usuarioModal" data-titulo="Nuevo"><i class="fa fa-plus fa-lg"></i>&nbsp;Previsualizar</a>
                                 </div>
                             </div>
@@ -224,6 +281,7 @@
                 </div>
             </div>
             <div id='pedidos' class="col-md-12">
+                <h3>Pedido</h3>
                 <div class="box">
                     <div class="box-body">
                         <div class="table-responsive">
@@ -231,8 +289,7 @@
                                 <thead>
                                     <tr>
                                         <th class="col-md-1">#</th>
-                                        <th class="col-md-10" colspan="3">Plato</th>
-                                        <th class="col-md-1 col-md-1 col-sm-1 col-xs-1"></th>
+                                        <th class="col-md-10">Plato</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tb_usuarios">
@@ -240,25 +297,7 @@
                                     <tr>
                                         <th scope="row">1</td>
                                         <td>
-                                            Arroz c/n pollo
-                                        </td>
-                                        <td>
-                                            <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
-                                                <option value='1'>Adulto</option>
-                                                <option value='2' selected>Niño</option>
-                                                <option value='3' selected>Embarazada</option>
-                                                <option value='4' selected>Mujer c7n bebe</option>
-                                                <option value='5' selected>Adulto mayor</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input style="display: none"  class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
-                                            <span class="badge pull-right">27</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
-                                                &nbsp;<i class="fa fa-plus fa-sm"></i>
-                                            </button>
+                                            Sopa de Casa
                                         </td>
                                     </tr>
                                     <tr>
@@ -266,27 +305,14 @@
                                         <td>
                                             Arroz chaufa
                                         </td>
-                                        <td>
-                                            <select style="display: none" class="selectpicker" name="slct_tipo_persona" id="slct_tipo_persona_">
-                                                <option value='1'>Adulto</option>
-                                                <option value='2' selected>Niño</option>
-                                                <option value='3' selected>Embarazada</option>
-                                                <option value='4' selected>Mujer c7n bebe</option>
-                                                <option value='5' selected>Adulto mayor</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input  style="display: none" class="form-control input-sm" placeholder="Observacion" name="txt_observacion" id="txt_observacion">
-                                            <span class="badge pull-right">23</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-success btn-xs" Onclick="AgregarSubmodulo();">
-                                                &nbsp;<i class="fa fa-plus fa-sm"></i>
-                                            </button>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <a class='btn btn-default btn-sm pull-left' id="volverPedido"
+                                        ><i class="fa fa-plus fa-lg"></i>&nbsp;Volver</a>
+                            <a class='btn btn-primary btn-sm pull-right' id="pedido"
+                                        ><i class="fa fa-plus fa-lg"></i>&nbsp;Previsualizar</a>
+
                         </div>
                     </div>
                 </div>

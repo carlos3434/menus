@@ -8,7 +8,20 @@ $(document).ready(function() {
         activarPedidos();
     });
     $('#cobrar').on("click",function(){
-        //activarPedidos();
+        activarPedidos();
+    });
+    $('#volverCobrar').on("click",function(){
+        activarMesas();
+    });
+    $('#volverVerPlatos').on("click",function(){
+        activarMesas();
+    });
+    //pedido
+    $('#volverPedido').on("click",function(){
+        activarPlatos();
+    });
+    $('#pedido').on("click",function(){
+        alert("gracias por su preferencia");
     });
 });
 
@@ -168,6 +181,6 @@ var vm = new Vue({
         }
     },
     ready: function () {
-        this.fetchUser();
+        //this.fetchUser();
     }
 });

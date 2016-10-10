@@ -1,154 +1,3 @@
-var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-var vm = new Vue({
-    http: {
-      root: '/api/users',
-      headers: {
-        'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
-      }
-    },
-    el: '#UserController',
-    components: {
-        'v-select': VueStrap.select,
-        'v-option': VueStrap.option,
-        'checkbox-group': VueStrap.checkboxGroup,
-        'checkbox': VueStrap.checkboxBtn,
-        'datepicker': VueStrap.datepicker,
-        'alert': VueStrap.alert,
-        'modal': VueStrap.modal,
-        'aside': VueStrap.aside,
-        'panel': VueStrap.panel,
-        'spinner': VueStrap.spinner,
-    },
-    data: {
-        loaded: false,
-        users:{
-            id: '',
-            name: '',
-            email: '',
-            address: ''
-        },
-        newUser: {
-            id: '',
-            name: '',
-            email: '',
-            address: ''
-        },
-        showModal: false,
-        edit: false,
-        tituloModal:'',
-        success: false,
-        danger: false,
-        msj: ''
-    },
-    methods: {
-        accionModal:function(){
-            if (this.edit)
-                this.EditUser(this.newUser.id);
-            else
-                this.AddNewUser();
-        },
-        EditNewUser: function () {// cargar modal para añadir usuario
-            this.showModal=true;
-            this.edit = false;
-            this.tituloModal = 'Nuevo Usuario';
-            this.newUser = { name:'', email:'', address:'' };
-        },
-        ShowUser: function (id) { //mostrar modal para editar
-            this.showModal=true;
-            this.edit = true;
-            this.tituloModal = 'Editar Usuario';
-            this.$http.get( ''+id, function (data) {
-                this.newUser.id = data.id;
-                this.newUser.name = data.name;
-                this.newUser.email = data.email;
-                this.newUser.address = data.address;
-            });
-        },
-        AddNewUser: function () { //añadir un usuario
-            this.loaded=true;
-            var user = this.newUser;
-            this.newUser = { name:'', email:'', address:'' };
-            this.$http.post('/api/users', user,  function (data) {
-                this.showModal=false;
-                this.loaded=false;
-                app.$broadcast('vuetable:refresh');
-                //vm.fetchUser();
-                msj=' usuario nuevo creado correctamente.';
-                this.ShowMensaje(msj, 5, true, false);
-            }).error(function(errors) {
-                this.loaded=false;
-                this.ShowMensaje(errors, 5, false, true);
-            });
-            self = this;
-            this.success = true;
-        },
-        fetchUser: function () { //consultar todos los usuarios
-            this.$http.get('', function (data) {
-                this.$set('users', data);
-            });
-        },
-        RemoveUser: function (id) { //remover 
-            var ConfirmBox = confirm("Are you sure, you want to delete this User?");
-            if(ConfirmBox) {
-                this.$http.delete( ''+id, function (data) {
-                    app.$broadcast('vuetable:refresh');
-                    msj=' usuario eliminado correctamente.';
-                    this.ShowMensaje(msj, 5, true, false);
-                }).error(function(errors) {
-                    this.ShowMensaje(errors, 5, false, true);
-                });
-            }
-            //this.fetchUser();
-        },
-        EditUser: function (id) { // enviar a laravel para guardar edicion
-            this.loaded=true;
-            var user = this.newUser;
-            this.newUser = { id: '', name: '', email: '', address: ''};
-            this.$http.patch( ''+id, user, function (data) {
-                this.showModal=false;
-                this.loaded=false;
-                //vm.fetchUser();
-                app.$broadcast('vuetable:refresh');
-                msj=' usuario modificado correctamente.';
-                this.ShowMensaje(msj, 5, true, false);
-            }).error(function(errors) {
-                this.loaded=false;
-                this.ShowMensaje(errors, 5, false, true);
-            });
-            //this.fetchUser();
-            this.edit = false;
-        },
-        ShowMensaje: function(msj, time, success, danger) {
-            this.msj=msj;
-            self = this;
-            this.danger = danger;
-            this.success = success;
-            setTimeout(function () {
-                self.danger = false;
-                self.success = false;
-            }, time*1000);
-        }
-    },
-    computed: {
-        validation: function () {
-            return {
-                name: !!this.newUser.name.trim(),
-                email: emailRE.test(this.newUser.email),
-                address: !!this.newUser.address.trim()
-            };
-        },
-        isValid: function () {
-            var validation = this.validation;
-            return Object.keys(validation).every(function (key) {
-                return validation[key];
-            });
-        }
-    },
-    ready: function () {
-        //this.fetchUser();
-    }
-});
 var E_SERVER_ERROR = 'Error communicating with the server';
 
 // fields definition
@@ -189,37 +38,22 @@ var tableColumns = [
         title: "Component",
         titleClass: 'center aligned',
         dataClass: 'custom-action center aligned',
-    }/*,
+    },
     {
         name: '__actions',
         dataClass: 'text-center',
-    }*/
+    }
 ];
 
 Vue.config.debug = true;
 
-    
-
-
-
 Vue.component('custom-action', {
     template: [
-        /*'<div>',
+        '<div>',
             '<button @click="itemAction(\'view-item\', rowData)"><i class="glyphicon glyphicon-zoom-in"></i></button>',
             '<button @click="itemAction(\'edit-item\', rowData)"><i class="glyphicon glyphicon-pencil"></i></button>',
             '<button @click="itemAction(\'delete-item\', rowData)"><i class="glyphicon glyphicon-remove"></i></button>',
-        '</div>'*/
-        '<td class="vuetable-actions text-center">',
-        '<button @click="itemAction(\'view-item\', rowData)" title="View"  data-placement="left" class="btn btn-info">',
-            '<i class="glyphicon glyphicon-zoom-in"></i> ',
-        '</button>',
-        '<button @click="itemAction(\'edit-item\', rowData)" title="Edit"  data-placement="top" class="btn btn-warning" @click="ShowUser(rowData.id)">',
-            '<i class="glyphicon glyphicon-pencil"></i> ',
-        '</button>',
-        '<button @click="itemAction(\'delete-item\', rowData)" title="Delete"  data-placement="right" class="btn btn-danger" @click="ShowUser(rowData.id)">',
-            '<i class="glyphicon glyphicon-remove"></i> ',
-        '</button>',
-        '</td>'
+        '</div>'
     ].join(''),
     props: {
         rowData: {
@@ -227,24 +61,16 @@ Vue.component('custom-action', {
             required: true
         }
     },
-    
     methods: {
         itemAction: function(action, data) {
-            if (action == 'view-item') {
-                sweetAlert(action, data.name);
-            } else if (action == 'edit-item') {
-                vm.ShowUser(data.id);
-            } else if (action == 'delete-item') {
-                vm.RemoveUser(data.id);
-            }
-            //sweetAlert('custom-action: ' + action, data.name);
+            sweetAlert('custom-action: ' + action, data.name);
         },
         onClick: function(event) {
             console.log('custom-action: on-click', event.target);
         },
         onDoubleClick: function(event) {
             console.log('custom-action: on-dblclick', event.target);
-        },
+        }
     }
 });
 
@@ -286,7 +112,7 @@ Vue.component('my-detail-row', {
     },
 });
 
-var app=new Vue({
+new Vue({
     el: '#app',
     data: {
         searchFor: '',
@@ -298,9 +124,7 @@ var app=new Vue({
         multiSort: true,
         perPage: 10,
         paginationComponent: 'vuetable-pagination',
-        //paginationInfoTemplate: 'แสดง {from} ถึง {to} จากทั้งหมด {total} รายการ',
-        paginationInfoTemplate: 'Displaying {from} to {to} of {total} items',
-                
+        paginationInfoTemplate: 'แสดง {from} ถึง {to} จากทั้งหมด {total} รายการ',
         itemActions: [
             { name: 'view-item', label: '', icon: 'glyphicon glyphicon-zoom-in', class: 'btn btn-info', extra: {'title': 'View', 'data-toggle':"tooltip", 'data-placement': "left"} },
             { name: 'edit-item', label: '', icon: 'glyphicon glyphicon-pencil', class: 'btn btn-warning', extra: {title: 'Edit', 'data-toggle':"tooltip", 'data-placement': "top"} },
@@ -329,7 +153,6 @@ var app=new Vue({
             ? '<span class="label label-info"><i class="glyphicon glyphicon-star"></i> Male</span>'
             : '<span class="label label-success"><i class="glyphicon glyphicon-heart"></i> Female</span>';
         },
-
         formatDate: function(value, fmt) {
             if (value == null) return '';
             fmt = (typeof fmt == 'undefined') ? 'D MMM YYYY' : fmt;
@@ -455,12 +278,8 @@ var app=new Vue({
         'vuetable:action': function(action, data) {
             console.log('vuetable:action', action, data);
             if (action == 'view-item') {
-
-
                 sweetAlert(action, data.name);
             } else if (action == 'edit-item') {
-
-
                 sweetAlert(action, data.name);
             } else if (action == 'delete-item') {
                 sweetAlert(action, data.name);
@@ -468,8 +287,6 @@ var app=new Vue({
         },
         'vuetable:load-success': function(response) {
             var data = response.data.data;
-            //
-            vm.users=data;
             console.log(data);
             if (this.searchFor !== '') {
                 for (n in data) {
