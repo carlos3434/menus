@@ -193,7 +193,7 @@
 
         <div class="table-responsive">
             <vuetable v-ref:vuetable
-                api-url="http://menus/api/users"
+                api-url="/api/users"
                 data-path="data"
                 pagination-path=""
                 :fields="fields"
