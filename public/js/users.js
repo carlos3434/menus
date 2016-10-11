@@ -171,7 +171,7 @@ var tableColumns = [
         name: 'nickname',
         sortField: 'nickname',
         callback: 'allCap'
-    },/*
+    },
     {
         name: 'birthdate',
         sortField: 'birthdate',
@@ -183,7 +183,7 @@ var tableColumns = [
         titleClass: 'text-center',
         dataClass: 'text-center',
         callback: 'gender'
-    },*/
+    },
     {
         name: '__component:custom-action',
         title: "Component",

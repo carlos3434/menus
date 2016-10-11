@@ -47,16 +47,69 @@ class ApiUserController extends Controller
 
     public function store(Request $request)
     {
+        
+        /*
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
+        foreach ($request->input('roles') as $key => $value) {
+            $user->attachRole($value);
+        }
+
+        return redirect()->route('users.index')
+                        ->with('success','User created successfully');
+                        */
         return User::create($request->all());
     }
 
     public function show($id)
     {
+        /*
+        $user = User::find($id);
+        $roles = Role::lists('display_name','id');
+        $userRole = $user->roles->lists('id','id')->toArray();
+
+        return view('users.edit',compact('user','roles','userRole'));*/
         return User::findOrFail($id);
     }
 
     public function update(Request $request, $id)
     {
+        /*
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = array_except($input,array('password'));    
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('role_user')->where('user_id',$id)->delete();
+
+        
+        foreach ($request->input('roles') as $key => $value) {
+            $user->attachRole($value);
+        }
+
+        return redirect()->route('users.index')
+                        ->with('success','User updated successfully');
+                        */
         User::findOrFail($id)->update($request->all());
         return response()->json($request->all()); //response()->json()
         

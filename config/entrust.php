@@ -19,7 +19,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'App\Restaurant\Role',
+    'role' => 'Restaurant\Role',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'App\Restaurant\Permission',
+    'permission' => 'Restaurant\Permission',
 
     /*
     |--------------------------------------------------------------------------
