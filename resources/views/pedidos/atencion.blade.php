@@ -11,7 +11,7 @@
 @section('main-content')
    <!-- <link href="{{ asset('/css/main_pedidos.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/icons.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('/css/icons.css') }}" rel="stylesheet">  -->
 
     <div class="row ">
 
