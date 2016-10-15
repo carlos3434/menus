@@ -25,8 +25,8 @@
            <div id='mesas' class="col-md-8">
                 <!-- col-md-8 start here -->
                 <h3>Mesas</h3>
-                    <div class="row">
-                        @for ($i = 0; $i < 10; $i++)
+                    <div class="row listado-mesas">
+                        @for ($i = 0; $i < 20; $i++)
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                 <!-- .col-md-3 -->
                                 <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
@@ -37,42 +37,6 @@
                         @endfor
                         
                     </div>
-                    <!-- .row start -->
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <!-- .col-md-3 -->
-                        <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
-                            <i class="icon icomoon-icon-table"></i>
-                            <span class="notification">5</span>
-                        </a>
-                    </div>
-                    <!-- / .col-md-3 -->
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <!-- .col-md-3 -->
-                        <a href="javascript:void(0);" class="stats-btn mb20">
-                            <i class="icon icomoon-icon-table"></i>
-                            <span class="notification blue">12</span>
-                        </a>
-                    </div>
-                    <!-- / .col-md-3 -->
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <!-- .col-md-3 -->
-                        <!--<a href="javascript:void(0);" title="" class="stats-btn pattern tipB mb20" data-original-title="I`m with pattern">-->
-                        <a href="javascript:void(0);" class="stats-btn mb20">
-                            <i class="icon icomoon-icon-table"></i>
-                            <!-- .<span class="txt">New Comments</span>-->
-                            <span class="notification green">23</span>
-                        </a>
-                    </div>
-                    <!-- / .col-md-3 -->
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <!-- .col-md-3 -->
-                        <a href="javascript:void(0);" class="stats-btn mb20">
-                            <i class="icon icomoon-icon-table"></i>
-                            <span class="notification">+5</span>
-                        </a>
-                    </div>
-                    <!-- / .col-md-3 -->
-                
                 <!-- / .row -->
             </div>
 

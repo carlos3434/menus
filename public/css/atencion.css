@@ -1,0 +1,3 @@
+.listado-mesas{}
+.listado-mesas a {text-align: center; display: block;}
+.listado-mesas a i.fa-table { font-size: 50px; background: #fff;  padding: 15px 15px; border-radius: 40px; box-shadow: 1px 1px 1px 1px rgba(222, 216, 216, 0.8);}
