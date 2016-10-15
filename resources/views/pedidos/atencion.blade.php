@@ -25,6 +25,18 @@
            <div id='mesas' class="col-md-8">
                 <!-- col-md-8 start here -->
                 <h3>Mesas</h3>
+                    <div class="row">
+                        @for ($i = 0; $i < 10; $i++)
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <!-- .col-md-3 -->
+                                <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
+                                    <i class="fa fa-table" aria-hidden="true"></i>
+                                    <span class="notification">5</span>
+                                </a>
+                            </div>
+                        @endfor
+                        
+                    </div>
                     <!-- .row start -->
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <!-- .col-md-3 -->
