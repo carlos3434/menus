@@ -14,8 +14,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
-Route::group(['middleware' => ['auth']], function() {
+//Route::auth();
+//Route::group(['middleware' => ['auth']], function() {
     Route::resource('/usuarios', 'UserController');
     Route::resource('/preparacion', 'PreparacionController');
     Route::resource('/pedidos', 'PedidoController');
@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('itemCRUD2/{id}/edit',['as'=>'itemCRUD2.edit','uses'=>'ItemCRUD2Controller@edit','middleware' => ['permission:item-edit']]);
     Route::patch('itemCRUD2/{id}',['as'=>'itemCRUD2.update','uses'=>'ItemCRUD2Controller@update','middleware' => ['permission:item-edit']]);
     Route::delete('itemCRUD2/{id}',['as'=>'itemCRUD2.destroy','uses'=>'ItemCRUD2Controller@destroy','middleware' => ['permission:item-delete']]);
-});
+//});
 
 /*
  Route::group(['prefix' => '/api/users'], function () {
