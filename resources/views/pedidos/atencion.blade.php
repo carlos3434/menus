@@ -13,7 +13,7 @@
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/icons.css') }}" rel="stylesheet">
 
-    <div class="row ">
+    <div class="row">
 
         <div id="AtencionController">
             <spinner id="spinner-box" :size="size" :fixed="fixed" v-show="loaded" text="Espere un momento por favor">
