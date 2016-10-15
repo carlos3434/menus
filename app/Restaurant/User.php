@@ -4,6 +4,7 @@ namespace Restaurant;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -14,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','address',
+        'name', 'email', 'password','address','phone_number','birthdate'
     ];
 
     /**
@@ -30,4 +31,17 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany('Restaurant\Role');
     }
+
+    public function getFullNameAttribute()
+    {
+
+        return $this->first_name .' '. $this->last_name;
+    }
+
+    public function getCreatedAtAttribute($attr)
+    {
+
+        return Carbon::parse($attr)->toFormattedDateString(); //Change the format to whichever you desire
+    }
+
 }
