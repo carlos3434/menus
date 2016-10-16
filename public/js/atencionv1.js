@@ -37,11 +37,8 @@ $(".btn-registrar").click(function(){
 });
 
 $( "div.listado-productos ul li" )
-  .mouseenter(function() {
-})
-  .mouseleave(function() {
-    console.log($(this).val());
-    $(".notificaciones-pedido").css("display", "none");
+  .mouseover(function() {
+  	$(".notificaciones-pedido").css("display", "none");
     setTimeout(function(){
     	new PNotify({
 	    	addclass: "notificaciones-pedido",
@@ -49,6 +46,10 @@ $( "div.listado-productos ul li" )
 	        text: 'Aqui ira preparacion del producto'
 	   });
     }, 200);
+})
+  .mouseout(function() {
+    console.log($(this).val());
+    $(".notificaciones-pedido").css("display", "none");
     
 });
 
