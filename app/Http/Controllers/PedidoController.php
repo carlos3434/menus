@@ -19,7 +19,7 @@ class PedidoController extends Controller
     	["valor" => "no disponible", "color" => "#ddd"]
     	];
 
-    	$productos[
+    	$productos = [
     		"menu" => [
     			["descripcion_corta" => "Sopa + Pollo Saltado",
     		    "preparacion" => "Esta es una descripcion de preparacion",
