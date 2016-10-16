@@ -34,10 +34,11 @@ $(".btn-remover-producto").click(function(){
 });
 
 pintarResultado = function(data) {
-	console.log(data);
+	
 	if (data.length > 0) {
 			html = "";
 		for(var i in data) {
+			console.log(data[i]);
 			valor = JSON.parse(data[i]);
 			valor.seleccionado = 1;
 			valor.stockS = 1;
