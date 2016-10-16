@@ -19,8 +19,8 @@
     			<h2>Malla de Mesas</h2>
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
-    					<div class="col-lg-3" style='background-color: {{$value["estado"]["color"]}}'>
-    						<a href="javascript:void(0);">
+    					<div class="col-lg-3">
+    						<a href="javascript:void(0);" style='background-color: {{$value["estado"]["color"]}}'>
     							<i class="fa fa-table" aria-hidden="true"></i>
     							<span>{{$value["nombre"]}}</span>
     						</a>
