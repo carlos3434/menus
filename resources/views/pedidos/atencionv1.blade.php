@@ -49,6 +49,7 @@
 	      <div class="modal-body">
 	        <div class="row">
 	        	<div class="col-md-5 listado-productos">
+	        		<h3>Productos</h3>
 	        		<ul  class="nav nav-pills">
 						<li class="active"><a  href="#1a" data-toggle="tab">Menú</a></li>
 						<li><a href="#2a" data-toggle="tab">Carta</a></li>
@@ -74,7 +75,7 @@
 	        		
 	        	</div>
 	        	<div class="col-md-5 listado-pedido">
-	        		
+	        		<h3>Listado de Pedido</h3>
 	        	</div>
 	        </div>
 	      </div>

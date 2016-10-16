@@ -8,5 +8,5 @@
 .listado-productos .tab-content .tab-pane ul {  list-style: none; padding: 10px 0px; width: 100%;}
 .listado-productos .tab-content .tab-pane ul li{ border-bottom: solid 2px #3c8dbc; padding: 5px; width: 100%; margin-bottom: 5px;}
 .listado-productos .tab-content .tab-pane ul li input[type=checkbox] { vertical-align: middle; margin: 0px; margin-right: 10px;}
-.listado-productos .tab-content .tab-pane ul li span.descripcion {display: inline-block; vertical-align: middle; padding: 5px;}
+.listado-productos .tab-content .tab-pane ul li span.descripcion {display: inline-block; vertical-align: middle; padding: 5px; width: calc(100% - 50px);  width: -moz-calc(100% - 50px); width: -webkit-calc(100% - 50px);}
 .listado-productos .tab-content .tab-pane ul li span.stock {    display: inline-block; float: right; vertical-align: middle;  padding: 5px; background: #ccc; color: #fff;}
