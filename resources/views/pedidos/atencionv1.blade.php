@@ -20,7 +20,7 @@
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
     					<div class="col-lg-3">
-    						<a href="javascript:void(0);" style='background-color: {{$value["estado"]["color"]}}'>
+    						<a href="javascript:void(0);" class="btn-mesa" data-mesa = "{{json_encode($value)}}" style='background-color: {{$value["estado"]["color"]}}'>
     							<i class="fa fa-table" aria-hidden="true"></i>
     							<span>{{$value["nombre"]}}</span>
     						</a>
@@ -320,7 +320,7 @@
 
 @push('scripts_custom')
     
-    <script src="/js/atencion.js"></script>
+    <script src="/js/atencionv1.js"></script>
 
     <style>
     .success-transition {
