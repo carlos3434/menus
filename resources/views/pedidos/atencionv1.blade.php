@@ -20,13 +20,11 @@
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
     					<div class="col-lg-3" style='background-color: {{$value["estado"]["color"]}}'>
-    						
+    						<a href="javascript:void(0);">
+    							<i class="fa fa-table" aria-hidden="true"></i>
+    							<span>{{$value["nombre"]}}</span>
+    						</a>
     					</div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
-                                 <i class="fa fa-table" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     @endforeach
     			</div>
     		</div>

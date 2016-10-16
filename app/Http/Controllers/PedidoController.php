@@ -20,7 +20,7 @@ class PedidoController extends Controller
     	];
     	
     	$mesas = [];
-    	for ($i = 0; $i < 50; $i++) {
+    	for ($i = 0; $i < 500; $i++) {
     		$p = rand(0, 3);
     		$numasientos = rand(2, 8);
     		if (isset($estados[$i])) {
