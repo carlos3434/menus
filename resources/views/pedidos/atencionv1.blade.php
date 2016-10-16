@@ -19,7 +19,7 @@
     			<h2>Malla de Mesas</h2>
     			<div class="listado-mesas">
     				@for ($i = 0; $i < 50; $i++)
-    					{$i%3}
+    					{{$i%3}}
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
                                  <i class="fa fa-table" aria-hidden="true"></i>
