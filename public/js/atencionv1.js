@@ -14,7 +14,7 @@ $(".btn-agregar-producto").click(function(){
 	$(".btn-producto").each(function(){
 		console.log($(this));
 		if($(this).is(":checked")) {
-			seleccionados.push($(this));
+			seleccionados.push($(this).val());
 		}
 	});
 	pintarResultado(seleccionados);
