@@ -48,7 +48,7 @@ $( "div.listado-productos ul li" )
 	        title: 'Preparacion',
 	        text: 'Aqui ira preparacion del producto'
 	   });
-    }, 200);
+    }, 1000);
     
 });
 

@@ -17,7 +17,7 @@
     <div class="row">
     	<div class="col-md-12">
     		<div class="col-md-12">
-    			<h2>Malla de Mesas</h2>
+    			<h2 class="titulo">Malla de Mesas</h2>
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
     					<div class="col-lg-2">
