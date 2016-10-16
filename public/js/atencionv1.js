@@ -36,6 +36,17 @@ $(".btn-registrar").click(function(){
 	confirmacionRegistro();
 });
 
+$( "div.listado-productos ul li" )
+  .mouseenter(function() {
+})
+  .mouseleave(function() {
+    console.log($(this).val());
+    new PNotify({
+        title: 'Regular Notice',
+        text: 'Check me out! I\'m a notice.'
+   });
+});
+
 pintarResultado = function(data) {
 	
 	if (data.length > 0) {
@@ -77,7 +88,7 @@ confirmacionRegistro = function(){
 	html+="</ul>";
 	swal({
 	  title: "¿Quieres realizar el pedido?",
-	  text: html,
+	  text: "",
 	  type: "warning",
 	  showCancelButton: true,
 	  confirmButtonClass: "btn-danger",
@@ -87,4 +98,5 @@ confirmacionRegistro = function(){
 	function(){
 	  swal("OK!", "Tu pedido ha sido solicitado.", "success");
 	});
-	};
+};
+
