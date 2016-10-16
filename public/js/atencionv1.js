@@ -41,7 +41,9 @@ $( "div.listado-productos ul li" )
 })
   .mouseleave(function() {
     console.log($(this).val());
+    $(".notificaciones-pedido").css("display", "none");
     new PNotify({
+    	addclass: "notificaciones-pedido",
         title: 'Regular Notice',
         text: 'Check me out! I\'m a notice.'
    });
