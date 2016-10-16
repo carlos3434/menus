@@ -12,7 +12,7 @@
     <!-- <link href="{{ asset('/css/main_pedidos.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('/css/atencion.css') }}" rel="stylesheet">
-    <link href="pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <div class="row">
     	<div class="col-md-12">
@@ -97,7 +97,7 @@
 @endsection
 
 @push('scripts_custom')
-    <script type="text/javascript" src="pnotify.custom.min.js"></script>
+    <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
     <script src="/js/atencionv1.js"></script>
 
     <style>
