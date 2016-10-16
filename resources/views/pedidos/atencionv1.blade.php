@@ -64,10 +64,13 @@
 						</div>
 					</div>
 	        	</div>
-	        	<div class="col-md-2 opciones">
-	        		
+	        	<div class="col-md-1 opciones">
+	        		<div class="contenedor-opciones">
+	        			<i class="fa fa-arrow-circle-o-right btn-agregar-producto" aria-hidden="true"></i>
+	        			<i class="fa fa-arrow-circle-o-left btn-remover-producto" aria-hidden="true"></i>
+	        		</div>
 	        	</div>
-	        	<div class="col-md-5 listado-pedido">
+	        	<div class="col-md-6 listado-pedido">
 	        		<h3>Listado de Pedido</h3>
 	        		<ul class="nav nav-pills">
 						<li class="active"><a  href="#1a" data-toggle="tab">Resumen</a></li>
@@ -75,10 +78,7 @@
 					</ul>
 					<div class="tab-content clearfix">
 						<div class="tab-pane active" id="1a">
-							<ul>
-								@foreach ($productos["menu"] as $key => $value)
-									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
-								@endforeach
+							<ul class="resultado">
 							</ul>
 						</div>
 					</div>
