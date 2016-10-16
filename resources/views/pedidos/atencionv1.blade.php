@@ -49,7 +49,26 @@
 	      <div class="modal-body">
 	        <div class="row">
 	        	<div class="col-md-5 listado-productos">
-	        		
+	        		<div id="exTab1" class="container">	
+						<ul  class="nav nav-pills">
+							<li class="active"><a  href="#1a" data-toggle="tab">Menú</a></li>
+							<li><a href="#2a" data-toggle="tab">Carta</a></li>
+						</ul>
+						<div class="tab-content clearfix">
+							<div class="tab-pane active" id="1a">
+								<ul>
+									@foreach ($productos["menu"] as $key => $value)
+										<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" /><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+									@endforeach
+								</ul>
+								
+							</div>
+							<div class="tab-pane" id="2a">
+						          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+							</div>
+						</div>
+					</div>
+
 	        	</div>
 	        	<div class="col-md-2 opciones">
 	        		

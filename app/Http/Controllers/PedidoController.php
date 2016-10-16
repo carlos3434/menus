@@ -23,27 +23,33 @@ class PedidoController extends Controller
     		"menu" => [
     			["descripcion_corta" => "Sopa + Pollo Saltado",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ],
+    		    "stock" => 50,
+    		    "tipo" => "M" ],
 
     		    ["descripcion_corta" => "Sopa + Aji de Gallina",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ],
+    		    "stock" => 50,
+    		    "tipo" => "M"  ],
 
     		    ["descripcion_corta" => "Causa de Pollo + Seco con Frejoles",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ],
+    		    "stock" => 50,
+    		    "tipo" => "M"  ],
 
     		    ["descripcion_corta" => "Cebiche + Arroz con Pollo",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ],
+    		    "stock" => 50,
+    		    "tipo" => "M"  ],
 
     		    ["descripcion_corta" => "Causa de Pollo + Adobo de Carne",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ],
+    		    "stock" => 50,
+    		    "tipo" => "M"  ],
 
     		    ["descripcion_corta" => "Sopa + Picante de Carne",
     		    "preparacion" => "Esta es una descripcion de preparacion",
-    		    "stock" => 50 ]
+    		    "stock" => 50,
+    		    "tipo" => "M"  ]
 
     				 ],
 
