@@ -6,3 +6,9 @@ $(".btn-mesa").click(function(){
 	$("#modal-pedido .modal-title").html("<b>PEDIDO : <b>"+data.nombre);
 	$("#modal-pedido").modal("show");
 });
+
+$(".btn-agregar-producto").click(function(){
+	$(".btn-producto").each(function(){
+		console.log($(this));
+	});
+});
