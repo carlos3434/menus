@@ -44,7 +44,7 @@ pintarResultado = function(data) {
 			valor.stockS = 1;
 			id = valor.id;
 			stock = parseInt(valor.stock);
-			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+data[i]+"' class='btn-producto-add' name='producto[]'><span class='descripcion'>"+valor.descripcion_corta+"</span><span class='stock'>1</span></li>";
+			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+valor+"' class='btn-producto-add' name='producto[]'><span class='descripcion'>"+valor.descripcion_corta+"</span><span class='stock'>1</span></li>";
 			nuevostock = stock-1;
 			$("#"+id+" span.stock").html(nuevostock);
 		}
@@ -56,6 +56,7 @@ pintarRemocion = function(data) {
 	if (data.length > 0) {
 		for(var i in data) {
 			valor = JSON.parse(data[i]);
+			console.log(valor);
 			stockS = parseInt(valor.stockS);
 			console.log(stockS);
 			id = valor.id;
