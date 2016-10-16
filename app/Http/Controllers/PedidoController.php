@@ -16,7 +16,7 @@ class PedidoController extends Controller
     	1=>["valor" => "reservada", "color" => "#f39c12"],
     	2 => ["valor" => "ocupada", "color" => "#dd4b39",
     	3 => ["valor" => "no disponible", "color" => "#ddd"]
-    	]
+    	];
     	
     	$mesas = [];
     	for ($i = 0; $i < 50; $i++) {
