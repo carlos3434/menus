@@ -30,7 +30,7 @@ $(".btn-remover-producto").click(function(){
 			seleccionados.push($(this).val());
 		}
 	});
-	pintarResultado(seleccionados);
+	pintarRemocion(seleccionados);
 	localStorage.setItem("productosR", JSON.stringify(seleccionados));
 });
 
