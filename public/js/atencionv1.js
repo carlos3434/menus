@@ -57,7 +57,7 @@ pintarRemocion = function(data) {
 		for(var i in data) {
 			valor = JSON.parse(data[i]);
 			stockS = parseInt(valor.stockS);
-
+			console.log(stockS);
 			id = valor.id;
 			stock = parseInt($("li#"+id+" span.stock").html());
 			stock+=stockS;
