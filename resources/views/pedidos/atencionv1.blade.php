@@ -17,6 +17,17 @@
     	<div class="col-md-12">
     		<div class="col-md-9">
     			<h2>Malla de Mesas</h2>
+    			<div class="listado-mesas">
+    				@for ($i = 0; $i < 50; $i++)
+    					{$i%3}
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                            <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
+                                 <i class="fa fa-table" aria-hidden="true"></i>
+                                    <span class="notification">5</span>
+                            </a>
+                        </div>
+                    @endfor
+    			</div>
     		</div>
     		<div class="col-md-3">
     			<h2>Resumen de Mesas</h2>
@@ -34,12 +45,10 @@
             <div class="alert alert-danger" transition="danger" v-if="danger">@{{ msj }} </div>
             
            <div id='mesas' class="col-md-8">
-                <!-- col-md-8 start here -->
                 <h3>Mesas</h3>
                     <div class="row listado-mesas">
                         @for ($i = 0; $i < 20; $i++)
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                <!-- .col-md-3 -->
                                 <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
                                     <i class="fa fa-table" aria-hidden="true"></i>
                                     <span class="notification">5</span>
@@ -48,7 +57,7 @@
                         @endfor
                         
                     </div>
-                <!-- / .row -->
+                
             </div>
 
             <div id='platos' class="col-md-12">
@@ -71,7 +80,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tb_usuarios">
-                                            <!-- <tr class="table-active">-->
                                             <tr>
                                                 <th scope="row">1</td>
                                                 <td>
@@ -191,7 +199,6 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tb_usuarios">
-                                            <!-- <tr class="table-active">-->
                                             <tr data-toggle="collapse" data-target="#detalle1" class="accordion-toggle">
                                                 <th scope="row">1</td>
                                                 <td>
@@ -280,7 +287,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tb_usuarios">
-                                    <!-- <tr class="table-active">-->
                                     <tr>
                                         <th scope="row">1</td>
                                         <td>
