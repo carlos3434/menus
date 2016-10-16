@@ -17,18 +17,24 @@
     	<div class="col-md-12">
     		<div class="col-md-9">
     			<h2>Malla de Mesas</h2>
-    			<div class="listado-mesas">
-    				@for ($i = 0; $i < 50; $i++)
+    			<div class="row listado-mesas">
+    				@foreach ($mesas as $key => $value)
+    					<div class="col-lg-3" style='background-color: {{$value->estado->color}}'>
+    						
+    					</div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                             <a href="javascript:void(0);" title="" class="stats-btn tipB mb20" data-original-title="I`m with gradient">
                                  <i class="fa fa-table" aria-hidden="true"></i>
                             </a>
                         </div>
-                    @endfor
+                    @endforeach
     			</div>
     		</div>
     		<div class="col-md-3">
     			<h2>Resumen de Mesas</h2>
+    			<ul>
+    				<li><span class="etiqueta-disponible"></span><span class="texto"><b>Mesas Disponibles : </b></span></li>
+    			</ul>
     		</div>
     	</div>
     </div>
