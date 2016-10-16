@@ -36,12 +36,8 @@ $(".btn-registrar").click(function(){
 	confirmacionRegistro();
 });
 
-$( "div.listado-productos ul li" )
-  .mouseover(function() {
-})
-  .mouseleave(function() {
-    console.log($(this).val());
-    $(".notificaciones-pedido").css("display", "none");
+notificacion = function(data) {
+$(".notificaciones-pedido").css("display", "none");
     setTimeout(function(){
     	new PNotify({
 	    	addclass: "notificaciones-pedido",
@@ -49,8 +45,7 @@ $( "div.listado-productos ul li" )
 	        text: 'Aqui ira preparacion del producto'
 	   });
     }, 1000);
-    
-});
+}
 
 pintarResultado = function(data) {
 	
