@@ -13,7 +13,6 @@ $(".btn-mesa").click(function(){
 $(".btn-agregar-producto").click(function(){
 	seleccionados = [];
 	$(".btn-producto").each(function(){
-		console.log($(this));
 		if($(this).is(":checked")) {
 			seleccionados.push($(this).val());
 		}
@@ -24,7 +23,7 @@ $(".btn-agregar-producto").click(function(){
 
 $(".btn-remover-producto").click(function(){
 	seleccionados = [];
-	$(".btn-producto").each(function(){
+	$(".btn-producto-add").each(function(){
 		console.log($(this));
 		if($(this).is(":checked")) {
 			seleccionados.push($(this).val());
@@ -35,6 +34,7 @@ $(".btn-remover-producto").click(function(){
 });
 
 pintarResultado = function(data) {
+	console.log(data);
 	if (data.length > 0) {
 			html = "";
 		for(var i in data) {
@@ -43,7 +43,7 @@ pintarResultado = function(data) {
 			valor.stockS = 1;
 			id = valor.id;
 			stock = parseInt(valor.stock);
-			html+='<li id="add-producto-'+id+'"><input type="checkbox" value="'+JSON.stringify(valor)+'" class="btn-producto" name="producto[]"><span class="descripcion">'+valor.descripcion_corta+'</span><span class="stock">1</span></li>';
+			html+='<li id="add-producto-'+id+'"><input type="checkbox" value="'+JSON.stringify(valor)+'" class="btn-producto-add" name="producto[]"><span class="descripcion">'+valor.descripcion_corta+'</span><span class="stock">1</span></li>';
 			nuevostock = stock-1;
 			$("#"+id+" span.stock").html(nuevostock);
 		}
