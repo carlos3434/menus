@@ -18,6 +18,36 @@ class PedidoController extends Controller
     	["valor" => "ocupada", "color" => "#dd4b39"],
     	["valor" => "no disponible", "color" => "#ddd"]
     	];
+
+    	$productos[
+    		"menu" => [
+    			["descripcion_corta" => "Sopa + Pollo Saltado",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ],
+
+    		    ["descripcion_corta" => "Sopa + Aji de Gallina",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ],
+
+    		    ["descripcion_corta" => "Causa de Pollo + Seco con Frejoles",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ],
+
+    		    ["descripcion_corta" => "Cebiche + Arroz con Pollo",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ],
+
+    		    ["descripcion_corta" => "Causa de Pollo + Adobo de Carne",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ],
+
+    		    ["descripcion_corta" => "Sopa + Picante de Carne",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50 ]
+
+    				 ],
+
+    	]
     	
     	$mesas = [];
     	for ($i = 0; $i < 50; $i++) {
