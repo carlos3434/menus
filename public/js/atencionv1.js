@@ -33,7 +33,7 @@ $(".btn-remover-producto").click(function(){
 });
 
 $(".btn-registrar").click(function(){
-
+	confirmacionRegistro();
 });
 
 pintarResultado = function(data) {
