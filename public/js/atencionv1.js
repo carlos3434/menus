@@ -25,10 +25,11 @@ pintarResultado = function(data) {
 	if (data.length > 0) {
 			html = "";
 		for(var i in data) {
-			id = data[i].id;
-			stock = parseInt(data[i].stock);
-			console.log(data[i]);
-			html+='<li><input type="checkbox" value="'+JSON.stringify(data[i])+'" class="btn-producto" name="producto[]"><span class="descripcion">'+data[i].descripcion_corta+'</span><span class="stock">1</span></li>';
+			valor = JSON.parse(data[i]);
+			id = valor.id;
+			stock = parseInt(valor.stock);
+			console.log(valor);
+			html+='<li><input type="checkbox" value="'+JSON.stringify(valor)+'" class="btn-producto" name="producto[]"><span class="descripcion">'+valor.descripcion_corta+'</span><span class="stock">1</span></li>';
 			nuevostock = stock-1;
 			$("#"+id+" span.stock").html(nuevostock);
 		}
