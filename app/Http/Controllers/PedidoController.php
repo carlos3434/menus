@@ -12,11 +12,13 @@ class PedidoController extends Controller
     
     public function index()
     {
-        return view('pedidos.atencion');
+        return view('pedidos.atencionv1');
+        //return view('pedidos.atencion');
     }
     public function getPreparacion()
     {
         return view('pedidos.atencion');
     }
+
 
 }
