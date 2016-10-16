@@ -6,8 +6,8 @@
 .listado-productos ul li input[type=checkbox] { vertical-align: middle; margin-right: 10px;}
 #modal-pedido h3{ margin-top: 0px;}
 #modal-pedido .tab-content .tab-pane {box-shadow: 1px 1px 1px 1px rgba(167, 154, 154, 0.5); padding: 5px 10px;}
-.listado-productos .tab-content .tab-pane ul {  list-style: none; padding: 10px 0px; width: 100%;}
-.listado-productos .tab-content .tab-pane ul li{ border-bottom: solid 2px #3c8dbc; padding: 5px; width: 100%; margin-bottom: 5px;}
-.listado-productos .tab-content .tab-pane ul li input[type=checkbox] { vertical-align: middle; margin: 0px; margin-right: 10px;}
-.listado-productos .tab-content .tab-pane ul li span.descripcion {display: inline-block; vertical-align: middle; padding: 5px; width: calc(100% - 50px);  width: -moz-calc(100% - 50px); width: -webkit-calc(100% - 50px);}
-.listado-productos .tab-content .tab-pane ul li span.stock {    display: inline-block; float: right; vertical-align: middle;  padding: 5px; background: #ccc; color: #fff;}
+#modal-pedido .tab-content .tab-pane ul {  list-style: none; padding: 10px 0px; width: 100%;}
+#modal-pedido .tab-content .tab-pane ul li{ border-bottom: solid 2px #3c8dbc; padding: 5px; width: 100%; margin-bottom: 5px;}
+#modal-pedido .tab-content .tab-pane ul li input[type=checkbox] { vertical-align: middle; margin: 0px; margin-right: 10px;}
+#modal-pedido .tab-content .tab-pane ul li span.descripcion {display: inline-block; vertical-align: middle; padding: 5px; width: calc(100% - 50px);  width: -moz-calc(100% - 50px); width: -webkit-calc(100% - 50px);}
+#modal-pedido .tab-content .tab-pane ul li span.stock {    display: inline-block; float: right; vertical-align: middle;  padding: 5px; background: #ccc; color: #fff;}

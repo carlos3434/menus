@@ -46,7 +46,6 @@
 	        		<h3>Productos</h3>
 	        		<ul  class="nav nav-pills">
 						<li class="active"><a  href="#1a" data-toggle="tab">Menú</a></li>
-						<li><a href="#2a" data-toggle="tab">Carta</a></li>
 					</ul>
 					<div class="tab-content clearfix">
 						<div class="tab-pane active" id="1a">
