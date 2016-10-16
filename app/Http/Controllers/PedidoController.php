@@ -25,7 +25,7 @@ class PedidoController extends Controller
     		$numasientos = rand(2, 8);
     		if (isset($estados[$p])) {
     			$mesas[] = ["nombre" => "MESA-".$i,
-    						"estado" => $estados[$i],
+    						"estado" => $estados[$p],
     						"numasientos" => $numasientos];
     		}
     	}
