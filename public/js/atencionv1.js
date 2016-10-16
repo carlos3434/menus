@@ -2,7 +2,6 @@ localStorage.setItem("productosS", "{}");
 localStorage.setItem("productosR", "{}");
 
 $(".btn-mesa").click(function(){
-	console.log($(this).data("mesa"));
 	data = $(this).data("mesa")
 	data.productos = 4;
 	$(this).attr("data-mesa", JSON.stringify(data));
@@ -33,12 +32,15 @@ $(".btn-remover-producto").click(function(){
 	localStorage.setItem("productosR", JSON.stringify(seleccionados));
 });
 
+$(".btn-registrar").click(function(){
+
+});
+
 pintarResultado = function(data) {
 	
 	if (data.length > 0) {
 			html = "";
 		for(var i in data) {
-			console.log(data[i]);
 			valor = JSON.parse(data[i]);
 			valor.seleccionado = 1;
 			valor.stockS = 1;
@@ -56,9 +58,7 @@ pintarRemocion = function(data) {
 	if (data.length > 0) {
 		for(var i in data) {
 			valor = JSON.parse(data[i]);
-			console.log(valor);
 			stockS = parseInt(valor.stockS);
-			console.log(stockS);
 			id = valor.id;
 			stock = parseInt($("li#"+id+" span.stock").html());
 			stock+=stockS;
@@ -67,3 +67,24 @@ pintarRemocion = function(data) {
 		}
 	}
 };
+
+confirmacionRegistro = function(){
+	pedido = JSON.parse(localStorage.getItem("productosS"));
+	html="<ul>";
+	for (var i in pedido){
+		html+="<li>"+pedido[i].seleccionado+"   |   "+pedido[i].descripcion_corta+"</li>";
+	}
+	html+="</ul>";
+	swal({
+	  title: "¿Quieres realizar el pedido?",
+	  text: html,
+	  type: "warning",
+	  showCancelButton: true,
+	  confirmButtonClass: "btn-danger",
+	  confirmButtonText: "Si, pedir!",
+	  closeOnConfirm: false
+	},
+	function(){
+	  swal("OK!", "Tu pedido ha sido solicitado.", "success");
+	});
+	};
