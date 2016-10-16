@@ -19,7 +19,7 @@
     			<h2>Malla de Mesas</h2>
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
-    					<div class="col-lg-3" style='background-color: {{$value->estado->color}}'>
+    					<div class="col-lg-3" style='background-color: {{$value["estado"]["color"]}}'>
     						
     					</div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
