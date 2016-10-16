@@ -47,7 +47,7 @@ class PedidoController extends Controller
 
     				 ],
 
-    	]
+    	];
     	
     	$mesas = [];
     	for ($i = 0; $i < 50; $i++) {
@@ -59,7 +59,7 @@ class PedidoController extends Controller
     						"numasientos" => $numasientos];
     		}
     	}
-    	$data = ["estados" => $estados, "mesas" => $mesas];
+    	$data = ["estados" => $estados, "mesas" => $mesas, "productos" => $productos];
         return view('pedidos.atencionv1', $data);
         //return view('pedidos.atencion');
     }
