@@ -50,8 +50,39 @@ class PedidoController extends Controller
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ]
+			],
 
-    				 ],
+			"carta" => [
+    			["descripcion_corta" => "Arroz Chaufa Mixto",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C" ],
+
+    		    ["descripcion_corta" => "Bisteck a lo Pobre",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C"  ],
+
+    		    ["descripcion_corta" => "Parihuela",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C"  ],
+
+    		    ["descripcion_corta" => "Pollo Apanado",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C"  ],
+
+    		    ["descripcion_corta" => "Lomo Saltado",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C"  ],
+
+    		    ["descripcion_corta" => "Sopa a la Minuta",
+    		    "preparacion" => "Esta es una descripcion de preparacion",
+    		    "stock" => 50,
+    		    "tipo" => "C"  ]
+			],
 
     	];
     	
