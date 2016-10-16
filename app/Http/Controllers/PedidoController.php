@@ -21,64 +21,76 @@ class PedidoController extends Controller
 
     	$productos = [
     		"menu" => [
-    			["descripcion_corta" => "Sopa + Pollo Saltado",
+    			["id" => 1,
+    			"descripcion_corta" => "Sopa + Pollo Saltado",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M" ],
 
-    		    ["descripcion_corta" => "Sopa + Aji de Gallina",
+    		    ["id" => 2,
+    		    "descripcion_corta" => "Sopa + Aji de Gallina",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ],
 
-    		    ["descripcion_corta" => "Causa de Pollo + Seco con Frejoles",
+    		    ["id" => 3,
+    		    "descripcion_corta" => "Causa de Pollo + Seco con Frejoles",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ],
 
-    		    ["descripcion_corta" => "Cebiche + Arroz con Pollo",
+    		    ["id" => 4,
+    		    "descripcion_corta" => "Cebiche + Arroz con Pollo",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ],
 
-    		    ["descripcion_corta" => "Causa de Pollo + Adobo de Carne",
+    		    ["id" => 5,
+    		    "descripcion_corta" => "Causa de Pollo + Adobo de Carne",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ],
 
-    		    ["descripcion_corta" => "Sopa + Picante de Carne",
+    		    ["id" => 6,
+    		    "descripcion_corta" => "Sopa + Picante de Carne",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "M"  ]
 			],
 
 			"carta" => [
-    			["descripcion_corta" => "Arroz Chaufa Mixto",
+    			["id" => 7,
+    			"descripcion_corta" => "Arroz Chaufa Mixto",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C" ],
 
-    		    ["descripcion_corta" => "Bisteck a lo Pobre",
+    		    ["id" => 8,
+    		    "descripcion_corta" => "Bisteck a lo Pobre",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C"  ],
 
-    		    ["descripcion_corta" => "Parihuela",
+    		    ["id" => 9,
+    		    "descripcion_corta" => "Parihuela",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C"  ],
 
-    		    ["descripcion_corta" => "Pollo Apanado",
+    		    ["id" => 10,
+    		    "descripcion_corta" => "Pollo Apanado",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C"  ],
 
-    		    ["descripcion_corta" => "Lomo Saltado",
+    		    ["id" => 11,
+    		    "descripcion_corta" => "Lomo Saltado",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C"  ],
 
-    		    ["descripcion_corta" => "Sopa a la Minuta",
+    		    ["id" => 12,
+    		    "descripcion_corta" => "Sopa a la Minuta",
     		    "preparacion" => "Esta es una descripcion de preparacion",
     		    "stock" => 50,
     		    "tipo" => "C"  ]

@@ -22,9 +22,16 @@ $(".btn-agregar-producto").click(function(){
 });
 
 pintarResultado = function(data) {
-	html = "";
-	for(var i in data) {
-		html+='<li><input type="checkbox" value="{&quot;descripcion_corta&quot;:&quot;Sopa + Pollo Saltado&quot;,&quot;preparacion&quot;:&quot;Esta es una descripcion de preparacion&quot;,&quot;stock&quot;:50,&quot;tipo&quot;:&quot;M&quot;}" class="btn-producto" name="producto[]"><span class="descripcion">Sopa + Pollo Saltado</span><span class="stock">50</span></li>';
+	if (data.length > 0) {
+			html = "";
+		for(var i in data) {
+			id = data[i].id;
+			stock = parseInt(data[i].stock);
+			html+='<li><input type="checkbox" value="'+JSON.stringify(data[i])+'" class="btn-producto" name="producto[]"><span class="descripcion">'+data[i].descripcion_corta+'</span><span class="stock">1</span></li>';
+			nuevostock = stock-1;
+			$("#producto-"+id+" span.stock").html(nuevostock);
+		}
+		$(".resultado").html(html);
 	}
-	$(".resultado").html(html);
+
 };

@@ -52,14 +52,14 @@
 						<div class="tab-pane active" id="1a">
 							<ul>
 								@foreach ($productos["menu"] as $key => $value)
-									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+									<li id="producto-{{$value->id}}"><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
 								@endforeach
 							</ul>
 						</div>
 						<div class="tab-pane" id="2a">
 						    <ul>
 								@foreach ($productos["carta"] as $key => $value)
-									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+									<li id="producto-{{$value->id}}"><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
 								@endforeach
 							</ul>
 						</div>
