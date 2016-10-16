@@ -15,11 +15,11 @@
 
     <div class="row">
     	<div class="col-md-12">
-    		<div class="col-md-9">
+    		<div class="col-md-12">
     			<h2>Malla de Mesas</h2>
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
-    					<div class="col-lg-3">
+    					<div class="col-lg-2">
     						<a href="javascript:void(0);" class="btn-mesa" data-mesa = "{{json_encode($value)}}" style='background-color: {{$value["estado"]["color"]}}'>
     							<i class="fa fa-table" aria-hidden="true"></i>
     							<span>{{$value["nombre"]}}</span>
@@ -27,12 +27,6 @@
     					</div>
                     @endforeach
     			</div>
-    		</div>
-    		<div class="col-md-3">
-    			<h2>Resumen de Mesas</h2>
-    			<ul>
-    				<li><span class="etiqueta-disponible"></span><span class="texto"><b>Mesas Disponibles : </b></span></li>
-    			</ul>
     		</div>
     	</div>
     </div>
@@ -58,14 +52,14 @@
 						<div class="tab-pane active" id="1a">
 							<ul>
 								@foreach ($productos["menu"] as $key => $value)
-									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" /><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
 								@endforeach
 							</ul>
 						</div>
 						<div class="tab-pane" id="2a">
 						    <ul>
 								@foreach ($productos["carta"] as $key => $value)
-									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" /><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
 								@endforeach
 							</ul>
 						</div>
@@ -76,6 +70,19 @@
 	        	</div>
 	        	<div class="col-md-5 listado-pedido">
 	        		<h3>Listado de Pedido</h3>
+	        		<ul class="nav nav-pills">
+						<li class="active"><a  href="#1a" data-toggle="tab">Resumen</a></li>
+						<li><a href="#2a" data-toggle="tab">Carta</a></li>
+					</ul>
+					<div class="tab-content clearfix">
+						<div class="tab-pane active" id="1a">
+							<ul>
+								@foreach ($productos["menu"] as $key => $value)
+									<li><input type="checkbox" value="{{json_encode($value)}}" class="btn-producto" name="producto[]"/><span class="descripcion">{{$value['descripcion_corta']}}</span><span class="stock">{{$value['stock']}}</span></li>
+								@endforeach
+							</ul>
+						</div>
+					</div>
 	        	</div>
 	        </div>
 	      </div>
