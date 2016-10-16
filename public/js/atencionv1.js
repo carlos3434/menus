@@ -44,7 +44,7 @@ pintarResultado = function(data) {
 			valor.stockS = 1;
 			id = valor.id;
 			stock = parseInt(valor.stock);
-			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+valor+"' class='btn-producto-add' name='producto[]'><span class='descripcion'>"+valor.descripcion_corta+"</span><span class='stock'>1</span></li>";
+			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+JSON.stringify(valor)+"' class='btn-producto-add' name='producto[]'><span class='descripcion'>"+valor.descripcion_corta+"</span><span class='stock'>1</span></li>";
 			nuevostock = stock-1;
 			$("#"+id+" span.stock").html(nuevostock);
 		}
