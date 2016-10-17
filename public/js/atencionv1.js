@@ -39,6 +39,7 @@ $(".btn-registrar").click(function(){
 $(document).delegate("input[name=cantdeproducto]", "change", function(){
 	console.log($(this));
 	data_producto = $(this).data("producto");
+	console.log(data_producto);
 	data_producto = JSON.parse(data_producto);
 	stockN = data_producto.stock - $(this).val();
 	$("#"+id+" span.stock").html(stockN);
