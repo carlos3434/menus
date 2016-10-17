@@ -11,6 +11,8 @@
 #modal-pedido .tab-content .tab-pane ul li input[type=checkbox] { vertical-align: middle; margin: 0px; margin-right: 10px;}
 #modal-pedido .tab-content .tab-pane ul li span.descripcion {display: inline-block; vertical-align: middle; padding: 5px; width: calc(100% - 50px);  width: -moz-calc(100% - 50px); width: -webkit-calc(100% - 50px);}
 #modal-pedido .tab-content .tab-pane ul li span.stock {display: inline-block; float: right; vertical-align: middle;  padding: 5px; background: #a59d9d; color: #fff;}
+#modal-pedido .tab-content .tab-pane ul.resultado li span.descripcion{width: calc(100% - 70px); width: -moz-calc(100% - 70px); width: -webkit-calc(100% - 70px);}
+#modal-pedido .tab-content .tab-pane ul.resultado li input.stock{display: inline-block;  width: 40px; vertical-align: middle; text-align: center;}
 .opciones{padding: 0px;}
 .btn-agregar-producto{color: #3c8dbc; cursor: pointer; font-size: 40px; text-align: center;  display: block;  margin: 10px auto;}
 .btn-remover-producto{ color: #dd4b39; font-size: 40px; display: block; margin: 10px auto; text-align: center;}
