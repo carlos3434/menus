@@ -39,10 +39,9 @@ $(".btn-registrar").click(function(){
 $(document).delegate("input[name=cantdeproducto]", "change", function(){
 	data_producto = $(this).data("producto");
 	console.log(data_producto);
-	stockN = data_producto.stock - $(this).val();
+	stockN = parseInt(data_producto.stock) - parseInt($(this).val());
 	$("#"+id+" span.stock").html(stockN);
-	data_producto.stock = stockN;
-
+	//data_producto.stock = stockN;
 	//$("li#"+id+" input[type=checkbox]").val(JSON.stringify(data_producto));
 });
 
