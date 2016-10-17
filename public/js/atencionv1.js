@@ -43,8 +43,7 @@ $(document).delegate("input[name=cantdeproducto]", "change", function(){
 	$("#"+id+" span.stock").html(stockN);
 	data_producto.stock = stockN;
 
-	$("li#"+id+" input[type=checkbox]").val(JSON.stringify(data_producto));
-	$(this).data("producto", JSON.stringify(data_producto));
+	//$("li#"+id+" input[type=checkbox]").val(JSON.stringify(data_producto));
 });
 
 notificacion = function(data) {
