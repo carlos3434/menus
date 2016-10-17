@@ -18,6 +18,13 @@
     	<div class="col-md-12">
     		<div class="col-md-12">
     			<h2 class="titulo">Malla de Mesas</h2>
+    			<div class="row listado-estados">
+    				@foreach ($estados as $key => $value)
+    					<div class="col-md-3" style='background-color: {{$value["color"]}}'>
+    						{{$value["valor"]}}
+    					</div>
+    				@endforeach
+    			</div>
     			<div class="row listado-mesas">
     				@foreach ($mesas as $key => $value)
     					<div class="col-lg-2">
