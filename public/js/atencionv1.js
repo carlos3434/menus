@@ -67,7 +67,7 @@ pintarResultado = function(data) {
 			id = valor.id;
 			stock = parseInt(valor.stock);
 			nuevostock = stock-1;
-			valor.stock = nuevostock;
+			//valor.stock = nuevostock;
 			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+JSON.stringify(valor)+"' class='btn-producto-add' name='producto[]'>";
 			html+="<span class='descripcion'>"+valor.descripcion_corta+"</span>";
 			html+="<input type='number' min='1' name='cantdeproducto' class='stock' value='1' data-producto='"+JSON.stringify(valor)+"' /></li>";
