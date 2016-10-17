@@ -37,7 +37,7 @@ $(".btn-registrar").click(function(){
 });
 
 $(document).delegate("input[name=cantdeproducto]", "change", function(){
-
+	console.log($(this));
 });
 
 notificacion = function(data) {
