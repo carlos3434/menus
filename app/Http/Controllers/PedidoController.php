@@ -14,7 +14,7 @@ class PedidoController extends Controller
     {	
     	$estados = [
     	["valor" => "Disponible", "color" => "#00a65a"],
-    	["valor" => "Reservada", "color" => "#f39c12"],
+    	["valor" => "Reservada", "color" => "#f1be6f"],
     	["valor" => "Ocupada", "color" => "#dd4b39"],
     	["valor" => "No Disponible", "color" => "#ddd"]
     	];
