@@ -87,7 +87,7 @@ pintarRemocion = function(data) {
 			id = valor.id;
 			/*stock = parseInt($("li#"+id+" span.stock").html());
 			stock+=stockS;*/
-			$("li#"+id+" span.stock").html(stock);
+			$("li#"+id+" span.stock").html(valor.stock);
 			$("#add-producto-"+id).remove();
 		}
 	}
