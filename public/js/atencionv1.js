@@ -85,8 +85,8 @@ pintarRemocion = function(data) {
 			valor = JSON.parse(data[i]);
 			stockS = parseInt(valor.stockS);
 			id = valor.id;
-			stock = parseInt($("li#"+id+" span.stock").html());
-			stock+=stockS;
+			/*stock = parseInt($("li#"+id+" span.stock").html());
+			stock+=stockS;*/
 			$("li#"+id+" span.stock").html(stock);
 			$("#add-producto-"+id).remove();
 		}
