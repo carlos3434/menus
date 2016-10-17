@@ -20,7 +20,7 @@
     			<h2 class="titulo">Malla de Mesas</h2>
     			<div class="row listado-estados">
     				@foreach ($estados as $key => $value)
-    					<div class="col-md-3" style='background-color: {{$value["color"]}}'>
+    					<div class="col-md-2" style='background-color: {{$value["color"]}}; text-align: center; color: #fff; font-weight: 700;'>
     						{{$value["valor"]}}
     					</div>
     				@endforeach
