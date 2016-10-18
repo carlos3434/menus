@@ -14,12 +14,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::auth();
-//Route::group(['middleware' => ['auth']], function() {
+Route::auth();
+Route::group(['middleware' => ['auth']], function() {
+    /*usuarios*/
     Route::resource('/usuarios', 'UserController');
+    Route::resource('/api/users', 'ApiUserController');
+    Route::post('/auth/user/change-password', ['as' => 'user.change-password', 'uses' => 'UserController@changePassword']);
+
+
+    //Route::resource('/roles', 'RoleController');
+
+
+
+
     Route::resource('/preparacion', 'PreparacionController');
     Route::resource('/pedidos', 'PedidoController');
-    Route::resource('/api/users', 'ApiUserController');
 
     Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:read-roles|create-roles|update-roles|delete-roles']]);
     Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:create-roles']]);
@@ -29,6 +38,7 @@ Route::get('/', function () {
     Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:update-roles']]);
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:delete-roles']]);
 
+
     Route::get('itemCRUD2',['as'=>'itemCRUD2.index','uses'=>'ItemCRUD2Controller@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
     Route::get('itemCRUD2/create',['as'=>'itemCRUD2.create','uses'=>'ItemCRUD2Controller@create','middleware' => ['permission:item-create']]);
     Route::post('itemCRUD2/create',['as'=>'itemCRUD2.store','uses'=>'ItemCRUD2Controller@store','middleware' => ['permission:item-create']]);
@@ -36,7 +46,7 @@ Route::get('/', function () {
     Route::get('itemCRUD2/{id}/edit',['as'=>'itemCRUD2.edit','uses'=>'ItemCRUD2Controller@edit','middleware' => ['permission:item-edit']]);
     Route::patch('itemCRUD2/{id}',['as'=>'itemCRUD2.update','uses'=>'ItemCRUD2Controller@update','middleware' => ['permission:item-edit']]);
     Route::delete('itemCRUD2/{id}',['as'=>'itemCRUD2.destroy','uses'=>'ItemCRUD2Controller@destroy','middleware' => ['permission:item-delete']]);
-//});
+});
 
 /*
  Route::group(['prefix' => '/api/users'], function () {

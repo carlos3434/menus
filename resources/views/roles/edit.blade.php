@@ -1,6 +1,14 @@
 @extends('layouts.app')
- 
-@section('content')
+
+@section('htmlheader_title')
+    Usuarios
+@endsection
+
+@section('contentheader_title')
+    <h1>Lista de Usuarios</h1>
+@endsection
+
+@section('main-content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
