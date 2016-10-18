@@ -13,10 +13,10 @@ class PedidoController extends Controller
     public function index()
     {	
     	$estados = [
-    	["valor" => "disponible", "color" => "#00a65a"],
-    	["valor" => "reservada", "color" => "#f39c12"],
-    	["valor" => "ocupada", "color" => "#dd4b39"],
-    	["valor" => "no disponible", "color" => "#ddd"]
+    	["valor" => "Disponible", "color" => "#19b16b"],
+    	["valor" => "Reservada", "color" => "#f1be6f"],
+    	["valor" => "Ocupada", "color" => "#dd4b39"],
+    	["valor" => "No Disponible", "color" => "#ddd"]
     	];
 
     	$productos = [

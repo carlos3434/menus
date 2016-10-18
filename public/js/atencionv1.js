@@ -36,6 +36,16 @@ $(".btn-registrar").click(function(){
 	confirmacionRegistro();
 });
 
+$(document).delegate("input[name=cantdeproducto]", "change", function(){
+	data_producto = $(this).data("producto");
+	id = data_producto.id;
+	console.log(data_producto);
+	stockN = parseInt(data_producto.stock) - parseInt($(this).val());
+	$("li#"+id+" span.stock").html(stockN);
+	//data_producto.stock = stockN;
+	//$("li#"+id+" input[type=checkbox]").val(JSON.stringify(data_producto));
+});
+
 notificacion = function(data) {
 $(".notificaciones-pedido").css("display", "none");
     setTimeout(function(){
@@ -57,8 +67,12 @@ pintarResultado = function(data) {
 			valor.stockS = 1;
 			id = valor.id;
 			stock = parseInt(valor.stock);
-			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+JSON.stringify(valor)+"' class='btn-producto-add' name='producto[]'><span class='descripcion'>"+valor.descripcion_corta+"</span><span class='stock'>1</span></li>";
 			nuevostock = stock-1;
+			//valor.stock = nuevostock;
+			html+="<li id='add-producto-"+id+"'><input type='checkbox' value='"+JSON.stringify(valor)+"' class='btn-producto-add' name='producto[]'>";
+			html+="<span class='descripcion'>"+valor.descripcion_corta+"</span>";
+			html+="<input type='number' min='1' name='cantdeproducto' class='stock' value='1' data-producto='"+JSON.stringify(valor)+"' /></li>";
+			
 			$("#"+id+" span.stock").html(nuevostock);
 		}
 		$(".resultado").html(html);
@@ -71,9 +85,9 @@ pintarRemocion = function(data) {
 			valor = JSON.parse(data[i]);
 			stockS = parseInt(valor.stockS);
 			id = valor.id;
-			stock = parseInt($("li#"+id+" span.stock").html());
-			stock+=stockS;
-			$("li#"+id+" span.stock").html(stock);
+			/*stock = parseInt($("li#"+id+" span.stock").html());
+			stock+=stockS;*/
+			$("li#"+id+" span.stock").html(valor.stock);
 			$("#add-producto-"+id).remove();
 		}
 	}
