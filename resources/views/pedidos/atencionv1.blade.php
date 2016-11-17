@@ -51,7 +51,6 @@
 	      <div class="modal-body">
 	        <div class="row">
 	        	<div class="col-md-5 listado-productos">
-	        		<h3>Productos</h3>
 	        		<ul  class="nav nav-pills">
 						<li class="active"><a  href="#1a" data-toggle="tab">Menú</a></li>
 						<li><a href="#2a" data-toggle="tab">Carta</a></li>
@@ -80,9 +79,8 @@
 	        		</div>
 	        	</div>
 	        	<div class="col-md-6 listado-pedido">
-	        		<h3>Listado de Pedido</h3>
 	        		<ul class="nav nav-pills">
-						<li class="active"><a  href="#1a" data-toggle="tab">Resumen</a></li>
+						<li class="active"><a  href="#1a" data-toggle="tab">Pedido</a></li>
 					</ul>
 					<div class="tab-content clearfix">
 						<div class="tab-pane active" id="1a">

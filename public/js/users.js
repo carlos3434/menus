@@ -34,6 +34,8 @@ var vm = new Vue({
             email: '',
             address: ''
         },
+        roles:{},
+        roles_user:{},
         showModal: false,
         edit: false,
         tituloModal:'',
@@ -53,21 +55,24 @@ var vm = new Vue({
             this.edit = false;
             this.tituloModal = 'Nuevo Usuario';
             this.newUser = { name:'', email:'', address:'' };
+            this.$http.get( 'create', function (data) {
+                this.roles=data.roles;
+            });
         },
         ShowUser: function (id) { //mostrar modal para editar
             this.showModal=true;
             this.edit = true;
             this.tituloModal = 'Editar Usuario';
-            this.$http.get( ''+id, function (data) {
-                this.newUser.id = data.id;
-                this.newUser.name = data.name;
-                this.newUser.email = data.email;
-                this.newUser.address = data.address;
+            this.$http.get( ''+id+'/edit', function (data) {
+                this.newUser=data.user;
+                this.roles=data.roles;
+                this.roles_user=data.roles_user;
             });
         },
         AddNewUser: function () { //añadir un usuario
             this.loaded=true;
             var user = this.newUser;
+            user.roles_user=this.roles_user;
             this.newUser = { name:'', email:'', address:'' };
             this.$http.post('/api/users', user,  function (data) {
                 this.showModal=false;
@@ -104,6 +109,7 @@ var vm = new Vue({
         EditUser: function (id) { // enviar a laravel para guardar edicion
             this.loaded=true;
             var user = this.newUser;
+            user.roles_user=this.roles_user;
             this.newUser = { id: '', name: '', email: '', address: ''};
             this.$http.patch( ''+id, user, function (data) {
                 this.showModal=false;
@@ -306,7 +312,10 @@ var app=new Vue({
             { name: 'edit-item', label: '', icon: 'glyphicon glyphicon-pencil', class: 'btn btn-warning', extra: {title: 'Edit', 'data-toggle':"tooltip", 'data-placement': "top"} },
             { name: 'delete-item', label: '', icon: 'glyphicon glyphicon-remove', class: 'btn btn-danger', extra: {title: 'Delete', 'data-toggle':"tooltip", 'data-placement': "right" } }
         ],
-        moreParams: [],
+        moreParams: [
+            'persist='+vm.loaded,
+            'only=Supervisor'
+        ],
     },
     watch: {
         'perPage': function(val, oldVal) {

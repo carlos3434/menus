@@ -23,6 +23,15 @@
         </div>
 
         <div class="form-group">
+            <label for="email">Rol:</label>
+            <select class="form-control" multiple v-model="roles_user">
+              <option v-for="(key, val) in roles" v-bind:value="key">
+                @{{ val }}
+              </option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="email">Email:</label>
             <input v-model="newUser.email" type="text" id="email" name="email" class="form-control">
         </div>

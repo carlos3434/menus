@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\CreateUserRequest;
 use Restaurant\User;
-//use App\User;
+use Restaurant\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,14 +50,22 @@ class ApiUserController extends Controller
         }
         return redirect('/logout');
     }
+    /**
+     * usuarios/create
+     * GET|HEAD
+     */
     public function create() {
         if(Auth::user()->can('create-users')) {
-            return Role::orderBy('display_name', 'asc')->lists('display_name', 'id');
-            //return view('auth::user.create', compact('roles'));
+            $roles = Role::orderBy('display_name', 'asc')->lists('display_name', 'id');
+            return ['roles'=>$roles];
         }
         return redirect('/logout');
     }
-    public function store(Request $request)
+    /**
+     * usuarios
+     * POST
+     */
+    public function store(CreateUserRequest $request)
     {
         
         /*
@@ -78,44 +88,56 @@ class ApiUserController extends Controller
                         ->with('success','User created successfully');
                         */
         if(Auth::user()->can('create-users')) {
-            return User::create($request->all());
+            $user = User::create($request->all());
+            if ($request->has('roles_user')) {
+                $user->roles()->getRelatedIds();
+                $user->roles()->sync($request->get('roles_user'));
+                //$user->roles()->getRelatedIds();
+            }
+            return $user;
         }
         return redirect('/logout');
     }
     /**
      * muestra datos del recurso y combos asociados para editar
+     * usuarios/{usuarios}/edit
+     * GET
      */
     public function edit($id) {
         if(Auth::user()->can('update-users')) {
-            $user = User::findOrFail($id);
-            $roles_user = User::find($id)->roles()->lists('role_id')->toArray();
+            $user = User::findOrFail($id); 
+            //$roles_user = $user->roles->lists('id')->first();
+            $roles_user = $user->roles->lists('id')->toArray();
             $roles = Role::orderBy('display_name', 'asc')->lists('display_name', 'id');
-            return view('auth::user.edit', compact('user', 'roles', 'roles_user'));
+            return [
+                'user'=>$user,
+                'roles'=>$roles,
+                'roles_user'=>$roles_user,
+            ];
+            //return view('auth::user.edit', compact('user', 'roles', 'roles_user'));
         }
         return redirect('/logout');
     }
 
-    /*public function show() {
-        return view('auth::user.form_change_password');
-    }*/
+
     /**
      * solo muestra datos del recurso
+     * usuarios/{usuarios}
+     * GET
      */
     public function show($id)
     {
-        /*
-        $user = User::find($id);
-        $roles = Role::lists('display_name','id');
-        $userRole = $user->roles->lists('id','id')->toArray();
-
-        return view('users.edit',compact('user','roles','userRole'));*/
         if(Auth::user()->can('read-users')) {
             return User::findOrFail($id);
         }
         return redirect('/logout');
     }
-
-    public function update(Request $request, $id)
+    /**
+     * actualizar usuario en especifico
+     * usuarios/{usuarios}
+     * PUT|PATCH
+     */
+    public function update(UpdateUserRequest $request, $id)
     {
         /*
         $this->validate($request, [
@@ -144,14 +166,25 @@ class ApiUserController extends Controller
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
                         */
+        //esta validacion debe estar por fuera para que no salgan los errores del request
         if(Auth::user()->can('update-users')) {
 
             User::findOrFail($id)->update($request->all());
-            return response()->json($request->all()); //response()->json()
+            $user = User::findOrFail($id); 
+
+            if ($request->has('roles_user')) {
+                $user->roles()->getRelatedIds();
+                $user->roles()->sync($request->get('roles_user'));
+                //$user->roles()->getRelatedIds();
+            }
+            return response()->json($request->all());
         }
         return redirect('/logout');
     }
-
+    /**
+     * usuarios/{usuarios}
+     * DELETE
+     */
     public function destroy($id)
     {
         if($this->user->can('delete-users')) {
