@@ -1,160 +1,5 @@
 var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-var vm = new Vue({
-    http: {
-      root: '/api/users',
-      headers: {
-        'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
-      }
-    },
-    el: '#UserController',
-    components: {
-        'v-select': VueStrap.select,
-        'v-option': VueStrap.option,
-        'checkbox-group': VueStrap.checkboxGroup,
-        'checkbox': VueStrap.checkboxBtn,
-        'datepicker': VueStrap.datepicker,
-        'alert': VueStrap.alert,
-        'modal': VueStrap.modal,
-        'aside': VueStrap.aside,
-        'panel': VueStrap.panel,
-        'spinner': VueStrap.spinner,
-    },
-    data: {
-        loaded: false,
-        users:{
-            id: '',
-            name: '',
-            email: '',
-            address: ''
-        },
-        newUser: {
-            id: '',
-            name: '',
-            email: '',
-            address: ''
-        },
-        roles:{},
-        roles_user:{},
-        showModal: false,
-        edit: false,
-        tituloModal:'',
-        success: false,
-        danger: false,
-        msj: ''
-    },
-    methods: {
-        accionModal:function(){
-            if (this.edit)
-                this.EditUser(this.newUser.id);
-            else
-                this.AddNewUser();
-        },
-        EditNewUser: function () {// cargar modal para añadir usuario
-            this.showModal=true;
-            this.edit = false;
-            this.tituloModal = 'Nuevo Usuario';
-            this.newUser = { name:'', email:'', address:'' };
-            this.$http.get( 'create', function (data) {
-                this.roles=data.roles;
-            });
-        },
-        ShowUser: function (id) { //mostrar modal para editar
-            this.showModal=true;
-            this.edit = true;
-            this.tituloModal = 'Editar Usuario';
-            this.$http.get( ''+id+'/edit', function (data) {
-                this.newUser=data.user;
-                this.roles=data.roles;
-                this.roles_user=data.roles_user;
-            });
-        },
-        AddNewUser: function () { //añadir un usuario
-            this.loaded=true;
-            var user = this.newUser;
-            user.roles_user=this.roles_user;
-            this.newUser = { name:'', email:'', address:'' };
-            this.$http.post('/api/users', user,  function (data) {
-                this.showModal=false;
-                this.loaded=false;
-                app.$broadcast('vuetable:refresh');
-                //vm.fetchUser();
-                msj=' usuario nuevo creado correctamente.';
-                this.ShowMensaje(msj, 5, true, false);
-            }).error(function(errors) {
-                this.loaded=false;
-                this.ShowMensaje(errors, 5, false, true);
-            });
-            self = this;
-            this.success = true;
-        },
-        fetchUser: function () { //consultar todos los usuarios
-            this.$http.get('', function (data) {
-                this.$set('users', data);
-            });
-        },
-        RemoveUser: function (id) { //remover 
-            var ConfirmBox = confirm("Are you sure, you want to delete this User?");
-            if(ConfirmBox) {
-                this.$http.delete( ''+id, function (data) {
-                    app.$broadcast('vuetable:refresh');
-                    msj=' usuario eliminado correctamente.';
-                    this.ShowMensaje(msj, 5, true, false);
-                }).error(function(errors) {
-                    this.ShowMensaje(errors, 5, false, true);
-                });
-            }
-            //this.fetchUser();
-        },
-        EditUser: function (id) { // enviar a laravel para guardar edicion
-            this.loaded=true;
-            var user = this.newUser;
-            user.roles_user=this.roles_user;
-            this.newUser = { id: '', name: '', email: '', address: ''};
-            this.$http.patch( ''+id, user, function (data) {
-                this.showModal=false;
-                this.loaded=false;
-                //vm.fetchUser();
-                app.$broadcast('vuetable:refresh');
-                msj=' usuario modificado correctamente.';
-                this.ShowMensaje(msj, 5, true, false);
-            }).error(function(errors) {
-                this.loaded=false;
-                this.ShowMensaje(errors, 5, false, true);
-            });
-            //this.fetchUser();
-            this.edit = false;
-        },
-        ShowMensaje: function(msj, time, success, danger) {
-            this.msj=msj;
-            self = this;
-            this.danger = danger;
-            this.success = success;
-            setTimeout(function () {
-                self.danger = false;
-                self.success = false;
-            }, time*1000);
-        }
-    },
-    computed: {
-        validation: function () {
-            return {
-                name: !!this.newUser.name.trim(),
-                email: emailRE.test(this.newUser.email),
-                address: !!this.newUser.address.trim()
-            };
-        },
-        isValid: function () {
-            var validation = this.validation;
-            return Object.keys(validation).every(function (key) {
-                return validation[key];
-            });
-        }
-    },
-    ready: function () {
-        //this.fetchUser();
-    }
-});
 var E_SERVER_ERROR = 'Error communicating with the server';
 
 // fields definition
@@ -195,8 +40,8 @@ var tableColumns = [
         title: "Component",
         titleClass: 'center aligned',
         dataClass: 'custom-action center aligned',
-    }/*,
-    {
+    },
+    /*{
         name: '__actions',
         dataClass: 'text-center',
     }*/
@@ -239,9 +84,9 @@ Vue.component('custom-action', {
             if (action == 'view-item') {
                 sweetAlert(action, data.name);
             } else if (action == 'edit-item') {
-                vm.ShowUser(data.id);
+                app.ShowUser(data.id);
             } else if (action == 'delete-item') {
-                vm.RemoveUser(data.id);
+                app.RemoveUser(data.id);
             }
             //sweetAlert('custom-action: ' + action, data.name);
         },
@@ -293,6 +138,12 @@ Vue.component('my-detail-row', {
 });
 
 var app=new Vue({
+    http: {
+      root: '/api/users',
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
+      }
+    },
     el: '#app',
     data: {
         searchFor: '',
@@ -313,9 +164,37 @@ var app=new Vue({
             { name: 'delete-item', label: '', icon: 'glyphicon glyphicon-remove', class: 'btn btn-danger', extra: {title: 'Delete', 'data-toggle':"tooltip", 'data-placement': "right" } }
         ],
         moreParams: [
-            'persist='+vm.loaded,
+            'persist='+this.loaded,
             'only=Supervisor'
         ],
+        //
+        loaded: false,
+        newUser: {
+            id: '',
+            name: '',
+            email: '',
+            address: ''
+        },
+        roles_user:false,
+        roles:{},
+        showModal: false,
+        edit: false,
+        tituloModal:'',
+        success: false,
+        danger: false,
+        msj: ''
+    },
+    components: {
+        'v-select': VueStrap.select,
+        'v-option': VueStrap.option,
+        'checkbox-group': VueStrap.checkboxGroup,
+        'checkbox': VueStrap.checkboxBtn,
+        'datepicker': VueStrap.datepicker,
+        'alert': VueStrap.alert,
+        'modal': VueStrap.modal,
+        'aside': VueStrap.aside,
+        'panel': VueStrap.panel,
+        'spinner': VueStrap.spinner,
     },
     watch: {
         'perPage': function(val, oldVal) {
@@ -438,6 +317,101 @@ var app=new Vue({
                 });
             }
         },
+
+
+
+        accionModal:function(){
+            if (this.edit)
+                this.EditUser(this.newUser.id);
+            else
+                this.AddNewUser();
+        },
+        EditNewUser: function () {// cargar modal para añadir usuario
+            this.showModal=true;
+            this.edit = false;
+            this.tituloModal = 'Nuevo Usuario';
+            this.newUser = { name:'', email:'', address:'' };
+            this.$http.get( 'create', function (data) {
+                this.roles=data.roles;
+            });
+        },
+        ShowUser: function (id) { //mostrar modal para editar
+            this.showModal=true;
+            this.edit = true;
+            this.tituloModal = 'Editar Usuario';
+            this.$http.get( ''+id+'/edit', function (data) {
+                this.newUser=data.user;
+                this.roles=data.roles;
+                this.roles_user=data.roles_user;
+            });
+        },
+        AddNewUser: function () { //añadir un usuario
+            this.loaded=true;
+            var user = this.newUser;
+            user.roles_user=this.roles_user;
+            this.newUser = { name:'', email:'', address:'' };
+            this.$http.post('/api/users', user,  function (data) {
+                this.showModal=false;
+                this.loaded=false;
+                app.$broadcast('vuetable:refresh');
+                //vm.fetchUser();
+                msj=' usuario nuevo creado correctamente.';
+                this.ShowMensaje(msj, 5, true, false);
+            }).error(function(errors) {
+                this.loaded=false;
+                this.ShowMensaje(errors, 5, false, true);
+            });
+            self = this;
+            this.success = true;
+        },
+        fetchUser: function () { //consultar todos los usuarios
+            this.$http.get('', function (data) {
+                this.$set('users', data);
+            });
+        },
+        RemoveUser: function (id) { //remover 
+            var ConfirmBox = confirm("Are you sure, you want to delete this User?");
+            if(ConfirmBox) {
+                this.$http.delete( ''+id, function (data) {
+                    app.$broadcast('vuetable:refresh');
+                    msj=' usuario eliminado correctamente.';
+                    this.ShowMensaje(msj, 5, true, false);
+                }).error(function(errors) {
+                    this.ShowMensaje(errors, 5, false, true);
+                });
+            }
+            //this.fetchUser();
+        },
+        EditUser: function (id) { // enviar a laravel para guardar edicion
+            this.loaded=true;
+            var user = this.newUser;
+            user.roles_user=this.roles_user;
+            this.newUser = { id: '', name: '', email: '', address: ''};
+            this.$http.patch( ''+id, user, function (data) {
+                this.showModal=false;
+                this.loaded=false;
+                //vm.fetchUser();
+                app.$broadcast('vuetable:refresh');
+                msj=' usuario modificado correctamente.';
+                this.ShowMensaje(msj, 5, true, false);
+            }).error(function(errors) {
+                this.loaded=false;
+                this.ShowMensaje(errors, 5, false, true);
+            });
+            //this.fetchUser();
+            this.edit = false;
+        },
+        ShowMensaje: function(msj, time, success, danger) {
+            this.msj=msj;
+            self = this;
+            this.danger = danger;
+            this.success = success;
+            setTimeout(function () {
+                self.danger = false;
+                self.success = false;
+            }, time*1000);
+        }
+
         // -------------------------------------------------------------------------------------------
         // You can change how sort params string is constructed by overriding getSortParam() like this
         // -------------------------------------------------------------------------------------------
@@ -447,6 +421,21 @@ var app=new Vue({
         //         return (sort.direction === 'desc' ? '+' : '') + sort.field
         //     }).join(',')
         // }
+    },
+    computed: {
+        validation: function () {
+            return {
+                name: !!this.newUser.name.trim(),
+                email: emailRE.test(this.newUser.email),
+                address: !!this.newUser.address.trim()
+            };
+        },
+        isValid: function () {
+            var validation = this.validation;
+            return Object.keys(validation).every(function (key) {
+                return validation[key];
+            });
+        }
     },
     events: {
         'vuetable:row-changed': function(data) {
@@ -478,7 +467,7 @@ var app=new Vue({
         'vuetable:load-success': function(response) {
             var data = response.data.data;
             //
-            vm.users=data;
+            //vm.users=data;
             console.log(data);
             if (this.searchFor !== '') {
                 for (n in data) {

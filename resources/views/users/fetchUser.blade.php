@@ -9,124 +9,28 @@
 @endsection
 
 @section('main-content')
-    <style>
-        /* Move down content because we have a fixed navbar that is 50px tall */
-        .vuetable th.sortable:hover {
-            color: #2185d0;
-            cursor: pointer;
-        }
-        .vuetable-actions {
-            width: 11%;
-            padding: 12px 0px;
-            text-align: center;
-        }
-        .vuetable-actions > button {
-          padding: 3px 6px;
-          margin-right: 4px;
-        }
-        .vuetable-pagination {
-            margin: 0;
-        }
-        .vuetable-pagination .btn {
-            margin: 2px;
-        }
-        .vuetable-pagination-info {
-            float: left;
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-        ul.pagination {
-          margin: 0px;
-        }
-        .vuetable-pagination-component {
-          float: right;
-        }
-        .vuetable-pagination-component li a {
-            cursor: pointer;
-        }
-        [v-cloak] {
-            display: none;
-        }
-        .highlight {
-            background-color: yellow;
-        }
-        .vuetable-detail-row {
-            height: 200px;
-        }
-        .detail-row {
-            margin-left: 40px;
-        }
-        .expand-transition {
-            transition: all .5s ease;
-        }
-        .expand-enter, .expand-leave {
-            height: 0;
-            opacity: 0;
-        }
-
-        /* Loading Animation: */
-        .vuetable-wrapper {
-            opacity: 1;
-            position: relative;
-            filter: alpha(opacity=100); /* IE8 and earlier */
-        }
-        .vuetable-wrapper.loading {
-          opacity:0.4;
-           transition: opacity .3s ease-in-out;
-           -moz-transition: opacity .3s ease-in-out;
-           -webkit-transition: opacity .3s ease-in-out;
-        }
-        .vuetable-wrapper.loading:after {
-          position: absolute;
-          content: '';
-          top: 40%;
-          left: 50%;
-          margin: -30px 0 0 -30px;
-          border-radius: 100%;
-          -webkit-animation-fill-mode: both;
-                  animation-fill-mode: both;
-          border: 4px solid #000;
-          height: 60px;
-          width: 60px;
-          background: transparent !important;
-          display: inline-block;
-          -webkit-animation: pulse 1s 0s ease-in-out infinite;
-                  animation: pulse 1s 0s ease-in-out infinite;
-        }
-        @keyframes pulse {
-          0% {
-            -webkit-transform: scale(0.6);
-                    transform: scale(0.6); }
-          50% {
-            -webkit-transform: scale(1);
-                    transform: scale(1);
-                 border-width: 12px; }
-          100% {
-            -webkit-transform: scale(0.6);
-                    transform: scale(0.6); }
-        }
-    </style>
-    <div id="UserController">
+    <div id="app">
         <spinner id="spinner-box" :size="size" :fixed="fixed" v-show="loaded" text="Espere un momento por favor">
         </spinner>
         <div class="alert alert-success" transition="success" v-if="success">@{{ msj }} </div>
         <div class="alert alert-danger" transition="danger" v-if="danger">@{{ msj }} </div>
-
-        <button type="button" class="btn btn-primary btn-sm"  @click="EditNewUser">New User</button>
-
-        @include('users.modal.user')
-    </div>
-    <div id="app">
         <div class="row">
-            <div class="col-md-5 form-inline pull-right">
-                <div class="form-inline form-group">
-                    <label>Search:</label>
-                    <input v-model="searchFor" class="form-control" @keyup.enter="setFilter">
-                    <button class="btn btn-primary" @click="setFilter">Go</button>
-                    <button class="btn btn-default" @click="resetFilter">Reset</button>
+            <div class="row form-group form-inline">
+                <div class="col-md-6">
+                    <div class="control-group">
+                        <label class="control-label"> </label>
+                        <button type="button" class="btn btn-primary btn-sm"  @click="EditNewUser">Nuevo</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="control-group pull-right">
+                        <label class="control-label">Buscar:</label>
+                        <input v-model="searchFor" class="form-control input-sm" @keyup.enter="setFilter">
+                        <button class="btn btn-primary btn-sm" @click="setFilter">Go</button>
+                        <button class="btn btn-default btn-sm" @click="resetFilter">Reset</button>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <div class="table-responsive">
@@ -155,7 +59,17 @@
                 detail-row-transition="expand"
                 row-class-callback="rowClassCB"
             ></vuetable>
+            <div class="control-group pull-right">
+                <select class="form-control input-sm" v-model="perPage">
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                    <option value=25>25</option>
+                </select>
+            </div>
         </div>
+        @include('users.modal.user')
     </div>
 @endsection
 
