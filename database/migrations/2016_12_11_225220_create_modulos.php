@@ -12,7 +12,7 @@ class CreateModulos extends Migration
      */
     public function up()
     {
-        Schema::create('modulos', function (Blueprint $table) {
+        /*Schema::create('modulos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50);
             $table->string('icon',50);
@@ -21,7 +21,7 @@ class CreateModulos extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
-        });
+        });*/
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateModulos extends Migration
      */
     public function down()
     {
-        Schema::drop('modulos');
+        //Schema::drop('modulos');
     }
 }

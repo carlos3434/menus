@@ -1,0 +1,11 @@
+EVENTOS
+
+forma automatica:
+
+1 para generar eventos de forma automatica se debe editar el archivo AuthServiceProvider
+  indicando donde estara el listener y el event. hay que recordar que un evento puede tener varios listeners
+
+2 luego ejecutamos en la consola: php artisan event:generate
+ello generara nuestro archivo event y listener
+
+3. 

@@ -28,7 +28,7 @@ Modulo de cocina
 
 Modulo de Caja
 1.- se debera poder cobrar por grupo o por ṕersona
-2.- al moemtno de sacar lla cuenta el moso preguntara la forma de pago
+2.- al moemtno de sacar la cuenta el moso preguntara la forma de pago
     CRITICO
 
 
@@ -99,3 +99,8 @@ Reporte:
 2.- platos atendidos por mosos
 3.- CRITICO
 
+Debe haber una opcion al momento antes de pagar para k el moso pregunte
+como se va a pagar y este pued agrupar pedidos y agruparlos
+y esto se peuda comuinicar a caja y se pueda cobrar por grupo: por eje,mplo de la mesa 23: hay 3 grupos 1 2 3, 
+entonces cuando la persona se acerque diga de la mesa 23 el grupo 2 cuanto es?
+y que sea por defecto varias ventas 

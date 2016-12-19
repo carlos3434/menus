@@ -15,4 +15,10 @@ class Permission extends EntrustPermission
    public function roles(){
         return $this->belongsToMany('Restaurant\Role');
     }
+    /**
+     * 
+     */
+    public function modulo(){
+        return $this->belongsTo('Restaurant\Modulo');
+    }
 }

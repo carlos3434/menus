@@ -34,13 +34,27 @@ class EntrustSetupTables extends Migration
             $table->primary(['user_id', 'role_id']);
             $table->softDeletes();
         });
-
+        //modulos
+        Schema::create('modulos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name',50);
+            $table->string('icon',50);
+            $table->string('url',50);
+            $table->integer('modulo_id')->nullable();
+            //$table->foreign('modulo_id')->references('id')->on('modulos')
+                //->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+            $table->softDeletes();
+        });
         // Create table for storing permissions
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->integer('modulo_id')->unsigned();
+            $table->foreign('modulo_id')->references('id')->on('modulos')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -69,6 +83,7 @@ class EntrustSetupTables extends Migration
     {
         Schema::drop('permission_role');
         Schema::drop('permissions');
+        Schema::drop('modulos');
         Schema::drop('role_user');
         Schema::drop('roles');
     }

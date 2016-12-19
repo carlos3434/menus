@@ -32,6 +32,31 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
+
+            @if (session()->has('submodulos')) 
+                @foreach ( session('submodulos') as $key => $val)
+                    <li class="treeview">
+                        <a href="{{ $key }}">
+                            <i class='fa fa-link'></i>
+                            <span>{{ $key }}</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @foreach ( $val as $k => $v)
+                                <li>
+                                    <a href="{{ $v->url }}">
+                                        <i class='fa {{ $v->icon }}'></i>
+                                        <span>{{ $v->name }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                    </li>
+                @endforeach
+            @endif
+
+
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>

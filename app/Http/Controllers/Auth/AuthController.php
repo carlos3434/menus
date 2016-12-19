@@ -70,4 +70,9 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    protected function authenticated($request, $user)
+    {
+        //redireccionar
+        return redirect('home');
+    }
 }

@@ -178,6 +178,9 @@ class CreateUsersTable extends Migration
         });
 
         // Create table for associating grupos to users (Many-to-Many)
+        //grupo: es el conjunto de mesas, un usuario pede estar asignado
+        // a varios grupos de mesa, y un grupo puede tener varios usuarios
+        //
         Schema::create('grupo_user', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('grupo_id')->unsigned();
@@ -236,23 +239,24 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sedes');
-        Schema::drop('grupos');
-        Schema::drop('mesas');
-        Schema::drop('estado_plato');
-        Schema::drop('tipo_plato');
-        Schema::drop('platos');
-        Schema::drop('calendarios');
-        Schema::drop('calendario_plato');
-        Schema::drop('estado_pedido');
-        Schema::drop('users');
-        Schema::drop('pedidos');
-        Schema::drop('tipo_cliente');
-        Schema::drop('pedido_plato');
-        Schema::drop('sede_user');
-        Schema::drop('grupo_user');
-        Schema::drop('ventas');
-        Schema::drop('clientes');
         Schema::drop('venta_detalle');
+        Schema::drop('clientes');
+        Schema::drop('ventas');
+        Schema::drop('grupo_user');
+        Schema::drop('sede_user');
+        Schema::drop('pedido_plato');
+        Schema::drop('tipo_cliente');
+        Schema::drop('pedidos');
+        Schema::drop('users');
+        Schema::drop('estado_pedido');
+        Schema::drop('calendario_plato');
+        Schema::drop('calendarios');
+        Schema::drop('platos');
+        Schema::drop('tipo_plato');
+        Schema::drop('estado_plato');
+        Schema::drop('mesas');
+        Schema::drop('grupos');
+        Schema::drop('sedes');
+        
     }
 }
